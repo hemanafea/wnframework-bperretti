@@ -6,7 +6,7 @@ wn.ui.form.make_control = function(opts) {
 	if(wn.ui.form[control_class_name]) {
 		return new wn.ui.form[control_class_name](opts);
 	} else {
-		console.log("Invalid Control Name: " + opts.df.fieldtype);
+		console.log(wn._("Invalid Control Name: ") + opts.df.fieldtype);
 	}
 }
 
@@ -788,7 +788,7 @@ wn.ui.form.ControlTable = wn.ui.form.Control.extend({
 		// add title if prev field is not column / section heading or html
 		if(["Column Break", "Section Break", "HTML"].indexOf(
 				wn.model.get("DocField", {parent: this.frm.doctype, idx: this.df.idx-1}).fieldtype)===-1) {
-			$("<label>" + this.df.label + "<label>").appendTo(this.wrapper);	
+			$("<label>" + wn._(this.df.label) + "<label>").appendTo(this.wrapper);	
 		}
 		
 		this.grid = new wn.ui.form.Grid({
@@ -802,7 +802,7 @@ wn.ui.form.ControlTable = wn.ui.form.Control.extend({
 
 		// description
 		if(this.df.description) {
-			$('<p class="text-muted small">' + this.df.description + '</p>')
+			$('<p class="text-muted small">' + wn._(this.df.description) + '</p>')
 				.appendTo(this.wrapper);
 		}
 		
