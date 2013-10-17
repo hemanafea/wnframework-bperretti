@@ -93,10 +93,10 @@ wn.editors.BootstrapWYSIWYG = Class.extend({
 	show_link_dialog: function() {
 		var me = this;
 		var d = new wn.ui.Dialog({
-				title: "Add Link",
+				title: wn._("Add Link"),
 				fields: [
 					{fieldtype: "Data", label:"Link", fieldname: "link", reqd: 1,
-						description:"example: http://example.com"},
+						description:wn._("example:")+" http://example.com"},
 					{fieldtype: "Button", label:"Add", fieldname: "add"},
 				]
 			});
