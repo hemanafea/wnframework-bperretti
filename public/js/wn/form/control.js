@@ -119,8 +119,7 @@ wn.ui.form.ControlReadOnly = wn.ui.form.Control.extend({
 			var value = wn.model.get_value(me.doctype, me.docname, me.fieldname);
 			me.$wrapper.html(value);
 		})
-	},
-});
+	},});
 
 wn.ui.form.ControlInput = wn.ui.form.Control.extend({
 	make: function() {
