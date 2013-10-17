@@ -11,18 +11,18 @@ $.extend(wn.model, {
 	std_fields_list: ['name', 'owner', 'creation', 'modified', 'modified_by',
 		'_user_tags', 'docstatus', 'parent', 'parenttype', 'parentfield', 'idx'],
 	std_fields: [
-		{fieldname:'name', fieldtype:'Link', label:'ID'},
-		{fieldname:'owner', fieldtype:'Data', label:'Created By'},
-		{fieldname:'creation', fieldtype:'Date', label:'Created On'},
-		{fieldname:'modified', fieldtype:'Date', label:'Last Updated On'},
-		{fieldname:'modified_by', fieldtype:'Data', label:'Last Updated By'},
-		{fieldname:'_user_tags', fieldtype:'Data', label:'Tags'},
-		{fieldname:'docstatus', fieldtype:'Int', label:'Document Status'},
+		{fieldname:'name', fieldtype:'Link', label:wn._('ID')},
+		{fieldname:'owner', fieldtype:'Data', label:wn._('Created By')},
+		{fieldname:'creation', fieldtype:'Date', label:wn._('Created On')},
+		{fieldname:'modified', fieldtype:'Date', label:wn._('Last Updated On')},
+		{fieldname:'modified_by', fieldtype:'Data', label:wn._('Last Updated By')},
+		{fieldname:'_user_tags', fieldtype:'Data', label:wn._('Tags')},
+		{fieldname:'docstatus', fieldtype:'Int', label:wn._('Document Status')},
 	],
 	
 	std_fields_table: [
-		{fieldname:'parent', fieldtype:'Data', label:'Parent'},
-		{fieldname:'idx', fieldtype:'Int', label:'Row No.'},
+		{fieldname:'parent', fieldtype:'Data', label:wn._('Parent')},
+		{fieldname:'idx', fieldtype:'Int', label:wn._('Row No.')},
 	],
 
 	new_names: {},
@@ -34,7 +34,7 @@ $.extend(wn.model, {
 				if(d.fieldname==fieldname) return d;
 			});
 		if(!docfield.length) {
-			msgprint("Unknown Column: " + fieldname);			
+			msgprint(wn._("Unknown Column: ") + fieldname);			
 		}
 		return docfield[0];
 	},
@@ -391,7 +391,7 @@ $.extend(wn.model, {
 	},
 	
 	delete_doc: function(doctype, docname, callback) {
-		wn.confirm("Permanently delete "+ docname + "?", function() {
+		wn.confirm(wn._("Permanently delete ")+ docname + "?", function() {
 			return wn.call({
 				method: 'webnotes.model.delete_doc',
 				args: {
@@ -412,11 +412,11 @@ $.extend(wn.model, {
 	
 	rename_doc: function(doctype, docname, callback) {
 		var d = new wn.ui.Dialog({
-			title: "Rename " + docname,
+			title: wn._("Rename ") + docname,
 			fields: [
-				{label:"New Name", fieldtype:"Data", reqd:1},
-				{label:"Merge with existing", fieldtype:"Check", fieldname:"merge"},
-				{label:"Rename", fieldtype: "Button"}
+				{label:wn._("New Name"), fieldtype:"Data", reqd:1},
+				{label:wn._("Merge with existing"), fieldtype:"Check", fieldname:"merge"},
+				{label:wn._("Rename"), fieldtype: "Button"}
 			]
 		});
 		d.get_input("rename").on("click", function() {
