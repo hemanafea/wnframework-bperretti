@@ -43,11 +43,11 @@ wn.model.DocList = Class.extend({
 		var meta = locals.DocType[doc.doctype];
 		if(doc.__islocal && (meta && meta.autoname 
 				&& meta.autoname.toLowerCase()=='prompt')) {
-			var newname = prompt('Enter the name of the new '+ doc.doctype, '');
+			var newname = prompt(wn._('Enter the name of the new ')+ doc.doctype, '');
 			if(newname) { 
 				doc.__newname = strip(newname);
 			} else {
-				msgprint("Name is required.");
+				msgprint(wn._("Name is required."));
 				throw "name required";
 			}
 		}
@@ -81,7 +81,7 @@ wn.model.DocList = Class.extend({
 				}
 			});
 			if(error_fields.length)
-				msgprint('<b>Mandatory fields required in '+ (doc.parenttype 
+				msgprint('<b>'+wn._('Mandatory fields required in ')+ (doc.parenttype 
 					? (wn.meta.docfield_map[doc.parenttype][doc.parentfield].label + ' (Table)') 
 					: doc.doctype) + ':</b>\n' + error_fields.join('\n'));	
 		});
