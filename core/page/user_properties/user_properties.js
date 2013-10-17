@@ -219,7 +219,7 @@ wn.UserProperties = Class.extend({
 						args: args,
 						callback: function(r) {
 							if(r.exc) {
-								msgprint("Did not add.");
+								msgprint(wn._("Did not add."));
 							} else {
 								me.refresh();
 							}
