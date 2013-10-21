@@ -26,7 +26,7 @@ cur_frm.cscript.has_special_chars = function(t) {
 // ------
 cur_frm.cscript.label = function(doc){
 	if(doc.label && cur_frm.cscript.has_special_chars(doc.label)){
-		cur_frm.fields_dict['label_help'].disp_area.innerHTML = '<font color = "red">Special Characters are not allowed</font>';
+		cur_frm.fields_dict['label_help'].disp_area.innerHTML = '<font color = "red">'+wn._('Special Characters are not allowed')+'</font>';
 		doc.label = '';
 		refresh_field('label');
 	}
@@ -45,8 +45,15 @@ cur_frm.fields_dict['dt'].get_query = function(doc, dt, dn) {
 }
 
 cur_frm.cscript.fieldtype = function(doc, dt, dn) {
-	if(doc.fieldtype == 'Link') cur_frm.fields_dict['options_help'].disp_area.innerHTML = 'Please enter name of the document you want this field to be linked to in <b>Options</b>.<br> Eg.: Customer';
-	else if(doc.fieldtype == 'Select') cur_frm.fields_dict['options_help'].disp_area.innerHTML = 'Please enter values in <b>Options</b> separated by enter. <br>Eg.: <b>Field:</b> Country <br><b>Options:</b><br>China<br>India<br>United States<br><br><b> OR </b><br>You can also link it to existing Documents.<br>Eg.: <b>link:</b>Customer';
+	if(doc.fieldtype == 'Link') cur_frm.fields_dict['options_help'].disp_area.innerHTML = wn._('Please enter name of the document you want this field to be linked to in ')+
+																						'<b>'+wn._('Options')+'</b>.<br> Eg.:'+wn._('Customer');
+	else if(doc.fieldtype == 'Select') cur_frm.fields_dict['options_help'].disp_area.innerHTML = wn._('Please enter values in')+
+																								 '<b>'+wn._('Options')+'</b>'+ wn._('separated by enter.')+
+																								 '<br>Eg.: <b>'+wn._('Field:')+'</b>'+
+																								  wn._('Country')+'<br><b>'+wn._('Options:')+'</b><br>China<br>India<br>'+
+																								  wn._('United States')+'<br><br><b>'+wn._('OR')+'</b><br>'+wn._('You can also link it to existing Documents.')+
+																								  '<br>Eg.: <b>link:</b>'+wn._('Customer');
+																								  
 	else cur_frm.fields_dict['options_help'].disp_area.innerHTML = '';
 }
 
