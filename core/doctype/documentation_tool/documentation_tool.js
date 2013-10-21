@@ -7,7 +7,7 @@ cur_frm.cscript.onload = function(doc) {
 cur_frm.cscript.refresh = function(doc) {
 	cur_frm.disable_save();
 
-	cur_frm.add_custom_button("Make Docs", function() {
+	cur_frm.add_custom_button(wn._("Make Docs"), function() {
 		wn.model.with_doctype("DocType", function() {
 			wn.docs.generate_all($(cur_frm.fields_dict.out.wrapper));
 		})
@@ -62,7 +62,7 @@ wn.docs.generate_all = function(logarea) {
 			}
 		}
 	
-		logarea.empty().append("Downloading server docs...<br>");
+		logarea.empty().append(wn._("Downloading server docs...")+"<br>");
 		
 		return wn.call({
 			"method": "core.doctype.documentation_tool.documentation_tool.get_docs",
@@ -81,11 +81,11 @@ wn.docs.generate_all = function(logarea) {
 					$.extend(wn.provide(n), obj);
 				});
 				
-				logarea.append("Preparing html...<br>");
+				logarea.append(wn._("Preparing html...")+"<br>");
 				
 				make_page("docs");
 
-				logarea.append("Writing...<br>");
+				logarea.append(wn._("Writing...")+"<br>");
 				return wn.call({
 					method: "core.doctype.documentation_tool.documentation_tool.write_docs",
 					args: {
@@ -291,9 +291,9 @@ wn.docs.DocsPage = Class.extend({
 
 		this.h3("Properties");
 		var tbody = this.get_tbody([
-				{label:"Property", width: "25%"},
-				{label:"Value", width: "25%"},
-				{label:"Description", width: "50%"},
+				{label:wn._("Property"), width: "25%"},
+				{label:wn._("Value"), width: "25%"},
+				{label:wn._("Description"), width: "50%"},
 			]);
 			
 		$.each(wn.model.get("DocField", {parent:"DocType"}), function(i, df) {
@@ -320,10 +320,10 @@ wn.docs.DocsPage = Class.extend({
 			this.h3("DocFields");
 			var tbody = this.get_tbody([
 					{label:"Sr", width: "10%"},
-					{label:"Fieldname", width: "25%"},
-					{label:"Label", width: "20%"},
-					{label:"Field Type", width: "25%"},
-					{label:"Options", width: "20%"},
+					{label:wn._("Fieldname"), width: "25%"},
+					{label:wn._("Label"), width: "20%"},
+					{label:wn._("Field Type"), width: "25%"},
+					{label:wn._("Options"), width: "20%"},
 				]);
 			docfields = docfields.sort(function(a, b) { return a.idx > b.idx ? 1 : -1 })
 			$.each(docfields, function(i, df) {
@@ -343,16 +343,16 @@ wn.docs.DocsPage = Class.extend({
 			this.h3("Permissions");
 			var tbody = this.get_tbody([
 					{label:"Sr", width: "8%"},
-					{label:"Role", width: "20%"},
-					{label:"Level", width: "7%"},
-					{label:"Read", width: "7%"},
-					{label:"Write", width: "8%"},
-					{label:"Create", width: "8%"},
-					{label:"Submit", width: "8%"},
-					{label:"Cancel", width: "8%"},
-					{label:"Amend", width: "8%"},
-					{label:"Report", width: "8%"},
-					{label:"Match", width: "10%"},
+					{label:wn._("Role"), width: "20%"},
+					{label:wn._("Level"), width: "7%"},
+					{label:wn._("Read"), width: "7%"},
+					{label:wn._("Write"), width: "8%"},
+					{label:wn._("Create"), width: "8%"},
+					{label:wn._("Submit"), width: "8%"},
+					{label:wn._("Cancel"), width: "8%"},
+					{label:wn._("Amend"), width: "8%"},
+					{label:wn._("Report"), width: "8%"},
+					{label:wn._("Match"), width: "10%"},
 				]);
 			obj._permissions = obj._permissions.sort(function(a, b) { 
 				return a.idx > b.idx ? 1 : -1 
@@ -479,7 +479,7 @@ wn.docs.DocsPage = Class.extend({
 		var source = "";
 		if(code.substr(0, 8)==="function" || value._source) {
 			source = repl('<p style="font-size: 90%;">\
-				<a href="#" data-toggle="%(name)s">View Source</a></p>\
+				<a href="#" data-toggle="%(name)s">'+wn._("View Source")+'</a></p>\
 				<pre data-target="%(name)s" style="display: none; font-size: 12px; \
 						background-color: white; border-radius: 0px;\
 						overflow-x: auto; word-wrap: normal;"><code class="language-%(lang)s">\
@@ -507,7 +507,7 @@ wn.docs.DocsPage = Class.extend({
 				source: source
 			})).appendTo(parent)
 		} catch(e) {
-			console.log("Possible html embedded in: " + name)
+			console.log(wn._("Possible html embedded in: ") + name)
 			console.log(e);
 		}
 	},
