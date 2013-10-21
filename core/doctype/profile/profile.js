@@ -41,7 +41,7 @@ cur_frm.cscript.refresh = function(doc) {
 	cur_frm.toggle_display(['sb1', 'sb3'], false);
 
  	if(!doc.__islocal){		
-		cur_frm.add_custom_button("Set Properties", function() {
+		cur_frm.add_custom_button(wn._("Set Properties"), function() {
 			wn.set_route("user-properties", doc.name);
 		})
 
