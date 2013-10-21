@@ -37,7 +37,7 @@ cur_frm.cscript.refresh = function() {
 	cur_frm.disable_save();
 	cur_frm.frm_head.appframe.clear_buttons();
 
-	cur_frm.add_custom_button('Update', function() {
+	cur_frm.add_custom_button(wn._('Update'), function() {
 		if(cur_frm.doc.doc_type) {
 			return cur_frm.call({
 				doc: cur_frm.doc,
@@ -52,20 +52,20 @@ cur_frm.cscript.refresh = function() {
 		}
 	});
 	
-	cur_frm.add_custom_button('Refresh Form', function() {
+	cur_frm.add_custom_button(wn._('Refresh Form'), function() {
 		cur_frm.script_manager.trigger("doc_type");
 	});
 	
-	cur_frm.add_custom_button('Reset to defaults', function() {
-		cur_frm.confirm('This will <b>remove the customizations</b> defined for this form.<br /><br />' 
-		+ 'Are you sure you want to <i>reset to defaults</i>?', cur_frm.doc, cur_frm.doctype, cur_frm.docname);
+	cur_frm.add_custom_button(wn._('Reset to defaults'), function() {
+		cur_frm.confirm(wn._('This will ')+'<b>'+wn._('remove the customizations ')+'</b>'+wn._('defined for this form.')+'<br /><br />' 
+		+ wn._('Are you sure you want to ') +'<i>'+('reset to defaults')+'</i>?', cur_frm.doc, cur_frm.doctype, cur_frm.docname);
 	});
 
 	if(!cur_frm.doc.doc_type) {
 		var frm_head = cur_frm.frm_head.appframe;
-		$(frm_head.buttons['Update']).prop('disabled', true);
-		$(frm_head.buttons['Refresh Form']).prop('disabled', true);
-		$(frm_head.buttons['Reset to defaults']).prop('disabled', true);
+		$(frm_head.buttons[wn._('Update')]).prop('disabled', true);
+		$(frm_head.buttons[wn._('Refresh Form')]).prop('disabled', true);
+		$(frm_head.buttons[wn._('Reset to defaults')]).prop('disabled', true);
 	}
 
 	cur_frm.cscript.hide_allow_attach(cur_frm.doc);
@@ -98,7 +98,7 @@ cur_frm.cscript.hide_allow_attach = function(doc) {
 
 cur_frm.confirm = function(msg, doc, dt, dn) {
 	var d = new wn.ui.Dialog({
-		title: 'Reset To Defaults',
+		title: wn._('Reset To Defaults'),
 		width: 500
 	});
 
@@ -146,85 +146,85 @@ cur_frm.add_fields_help = function() {
 		</div>');
 	$('#fields_help').click(function() {
 		var d = new wn.ui.Dialog({
-			title: 'Help: Field Properties',
+			title: wn._('Help: Field Properties'),
 			width: 600
 		});
 
 		var help =
 			"<table cellspacing='25'>\
 				<tr>\
-					<td><b>Label</b></td>\
-					<td>Set the display label for the field</td>\
+					<td><b>"+wn._("Label")+"</b></td>\
+					<td>"+wn._('Set the display label for the field')+"</td>\
 				</tr>\
 				<tr>\
-					<td><b>Type</b></td>\
-					<td>Change type of field. (Currently, Type change is \
-						allowed among 'Currency and Float')</td>\
+					<td><b>"+wn._("Type")+"</b></td>\
+					<td>"+wn._("Change type of field. (Currently, Type change is \
+						allowed among 'Currency and Float')")+"</td>\
 				</tr>\
 				<tr>\
-					<td width='25%'><b>Options</b></td>\
-					<td width='75%'>Specify the value of the field</td>\
+					<td width='25%'><b>"+wn._("Options")+"</b></td>\
+					<td width='75%'>"+wn._("Specify the value of the field")+"</td>\
 				</tr>\
 				<tr>\
-					<td><b>Perm Level</b></td>\
-					<td>\
-						Assign a permission level to the field.<br />\
-						(Permissions can be managed via Setup &gt; Permission Manager)\
-					</td>\
+					<td><b>"+wn._("Perm Level")+"</b></td>\
+					<td>"
+						+wn._("Assign a permission level to the field.")+"<br />"+
+						wn._("(Permissions can be managed via Setup &gt; Permission Manager)")+
+					"</td>\
 				</tr>\
 				<tr>\
-					<td><b>Width</b></td>\
-					<td>\
-						Width of the input box<br />\
-						Example: <i>120px</i>\
+					<td><b>"+wn._("Width")+"</b></td>"+
+					"<td>"+
+						wn._("Width of the input box")+"<br />"+
+						wn._("Example: ")+ "<i>120px</i>\
 					</td>\
 				</tr>\
 				<tr>\
 					<td><b>Reqd</b></td>\
-					<td>Mark the field as Mandatory</td>\
+					<td>"+wn._("Mark the field as Mandatory")+"</td>\
 				</tr>\
 				<tr>\
-					<td><b>In Filter</b></td>\
-					<td>Use the field to filter records</td>\
+					<td><b>"+wn._("In Filter")+"</b></td>\
+					<td>"+wn._("Use the field to filter records")+"</td>\
 				</tr>\
 				<tr>\
-					<td><b>Hidden</b></td>\
-					<td>Hide field in form</td>\
+					<td><b>"+wn._("Hidden")+"</b></td>\
+					<td>"+wn._("Hide field in form")+"</td>\
 				</tr>\
 				<tr>\
-					<td><b>Print Hide</b></td>\
-					<td>Hide field in Standard Print Format</td>\
+					<td><b>"+wn._("Print Hide")+"</b></td>\
+					<td>"+wn._("Hide field in Standard Print Format")+"</td>\
 				</tr>\
 				<tr>\
-					<td><b>Report Hide</b></td>\
-					<td>Hide field in Report Builder</td>\
+					<td><b>"+wn._("Report Hide")+"</b></td>\
+					<td>"+wn._("Hide field in Report Builder")+"</td>\
 				</tr>\
 				<tr>\
-					<td><b>Allow on Submit</b></td>\
-					<td>Allow field to remain editable even after submission</td>\
+					<td><b>"+wn._("Allow on Submit")+"</b></td>\
+					<td>"+wn._("Allow field to remain editable even after submission")+"</td>\
 				</tr>\
 				<tr>\
-					<td><b>Depends On</b></td>\
-					<td>\
-						Show field if a condition is met<br />\
-						Example: <code>eval:doc.status=='Cancelled'</code>\
-						 on a field like \"reason_for_cancellation\" will reveal \
-						\"Reason for Cancellation\" only if the record is Cancelled.\
-					</td>\
+					<td><b>"+wn._("Depends On")+"</b></td>\
+					<td>"+
+						wn._("Show field if a condition is met")+"<br />"+
+						wn._("Example: ")+"<code>eval:doc.status=='Cancelled'</code>"+
+						wn._("on a field like ")+reason_for_cancellation+ wn._("will reveal")+
+						wn._("Reason for Cancellation only if the record is Cancelled.")+
+					"</td>\
 				</tr>\
 				<tr>\
-					<td><b>Description</b></td>\
-					<td>Show a description below the field</td>\
+					<td><b>"+wn._("Description")+"</b></td>\
+					<td>"+wn._("Show a description below the field")+"</td>\
 				</tr>\
 				<tr>\
-					<td><b>Default</b></td>\
-					<td>Specify a default value</td>\
+					<td><b>"+wn._("Default")+"</b></td>\
+					<td>"+wn._("Specify a default value")+"</td>\
 				</tr>\
 				<tr>\
 					<td></td>\
 					<td><a class='link_type' \
 							onclick='cur_frm.fields_help_dialog.hide()'\
-							style='color:grey'>Press Esc to close</a>\
+							style='color:grey'>"+wn._("Press Esc to close")+"</a>\
 					</td>\
 				</tr>\
 			</table>"
