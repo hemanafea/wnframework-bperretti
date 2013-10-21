@@ -104,7 +104,7 @@ wn.RoleEditor = Class.extend({
 	show_roles: function() {
 		var me = this;
 		$(this.wrapper).empty();
-		var add_all_roles = $('<p><button class="btn btn-default">Add all roles</button></p>').appendTo($(this.wrapper));
+		var add_all_roles = $('<p><button class="btn btn-default">'+wn._("Add all roles")+'</button></p>').appendTo($(this.wrapper));
 		add_all_roles.find("button").on("click", function() {
 			$(me.wrapper).find('input[type="checkbox"]').each(function(i, check) {
 				if(!$(check).is(":checked")) {
@@ -199,13 +199,13 @@ wn.RoleEditor = Class.extend({
 			callback: function(r) {
 				var $body = $(me.perm_dialog.body);
 				$body.append('<table class="user-perm"><tbody><tr>\
-					<th style="text-align: left">Document Type</th>\
-					<th>Level</th>\
-					<th>Read</th>\
-					<th>Write</th>\
-					<th>Submit</th>\
-					<th>Cancel</th>\
-					<th>Amend</th></tr></tbody></table>');
+					<th style="text-align: left">'+wn._('Document Type')+'</th>\
+					<th>'+wn._("Level")+'</th>\
+					<th>'+wn._("Read")+'</th>\
+					<th>'+wn._("Write")+'</th>\
+					<th>'+wn._("Submit")+'</th>\
+					<th>'+wn._("Cancel")+'</th>\
+					<th>'+wn._("Amend")+'</th></tr></tbody></table>');
 				for(var i in r.message) {
 					var perm = r.message[i];
 					
@@ -238,7 +238,7 @@ wn.RoleEditor = Class.extend({
 	},
 	make_perm_dialog: function() {
 		this.perm_dialog = new wn.ui.Dialog({
-			title:'Role Permissions',
+			title: wn._('Role Permissions'),
 			width: 500
 		});
 	}
