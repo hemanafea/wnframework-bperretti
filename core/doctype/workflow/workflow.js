@@ -4,7 +4,7 @@ wn.core.Workflow = wn.ui.form.Controller.extend({
 	refresh: function(doc) {
 		this.frm.set_intro("");
 		if(doc.is_active) {
-			this.frm.set_intro("This Workflow is active.");
+			this.frm.set_intro(wn._("This Workflow is active."));
 		}
 		this.load_document_type(doc);
 	},
