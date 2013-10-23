@@ -51,12 +51,12 @@ wn.ui.form.Toolbar = Class.extend({
 	},
 	show_print_toolbar: function() {
 		var me = this;
-		this.appframe.add_button("Edit", function() {
+		this.appframe.add_button(wn._("Edit"), function() {
 			me.frm.edit_doc();
 			return false;
 		}, 'icon-pencil')
 		this.frm.$print_view_select = 
-			this.appframe.add_select("Print Format", this.frm.print_formats)
+			this.appframe.add_select(wn._("Print Format"), this.frm.print_formats)
 				.val(this.frm.print_formats[0])
 				.change(function() {
 					me.frm.refresh_print_layout();
@@ -74,15 +74,15 @@ wn.ui.form.Toolbar = Class.extend({
 
 			switch(this.frm.doc.docstatus) {
 				case 0:
-					$('<span class="label"><i class="icon-unlock"> To Submit</span>')
+					$('<span class="label"><i class="icon-unlock">'+wn._('To Submit')+'</span>')
 						.appendTo(status_bar);
 					break;
 				case 1:
-					$('<span class="label label-success"><i class="icon-lock"> Submitted</span>')
+					$('<span class="label label-success"><i class="icon-lock">'+wn._('Submitted')+'</span>')
 						.appendTo(status_bar);
 					break;
 				case 2:
-					$('<span class="label label-danger"><i class="icon-remove"> Cancelled</span>')
+					$('<span class="label label-danger"><i class="icon-remove">'+wn._('Cancelled')+'</span>')
 						.appendTo(status_bar);
 					break;
 			}
@@ -95,32 +95,32 @@ wn.ui.form.Toolbar = Class.extend({
 
 		// New
 		if(p[CREATE]) {
-			this.appframe.add_dropdown_button("File", wn._("New") + " " 
+			this.appframe.add_dropdown_button(wn._("File"), wn._("New") + " " 
 				+ wn._(me.frm.doctype), function() { 
 				new_doc(me.frm.doctype);}, 'icon-plus');
 		}
 
 		// Save
 		if(docstatus==0 && p[WRITE] && !this.read_only) {
-			this.appframe.add_dropdown_button("File", wn._("Save"), function() { 
+			this.appframe.add_dropdown_button(wn._("File"), wn._("Save"), function() { 
 				me.frm.save('Save', null, this);}, 'icon-save');
 		}
 		
 		// Print
 		if(!(me.frm.doc.__islocal || me.frm.meta.allow_print)) {
-			this.appframe.add_dropdown_button("File", wn._("Print..."), function() { 
+			this.appframe.add_dropdown_button(wn._("File"), wn._("Print..."), function() { 
 				me.frm.print_doc();}, 'icon-print');
 		}
 
 		// email
 		if(!(me.frm.doc.__islocal || me.frm.meta.allow_email)) {
-			this.appframe.add_dropdown_button("File", wn._("Email..."), function() { 
+			this.appframe.add_dropdown_button(wn._("File"), wn._("Email..."), function() { 
 				me.frm.email_doc();}, 'icon-envelope');
 		}
 
 		// Linked With
 		if(!me.frm.doc.__islocal && !me.frm.meta.issingle) {
-			this.appframe.add_dropdown_button("File", wn._('Linked With'), function() { 
+			this.appframe.add_dropdown_button(wn._("File"), wn._('Linked With'), function() { 
 				if(!me.frm.linked_with) {
 					me.frm.linked_with = new wn.ui.form.LinkedWith({
 						frm: me.frm
@@ -132,20 +132,20 @@ wn.ui.form.Toolbar = Class.extend({
 		
 		// copy
 		if(in_list(profile.can_create, me.frm.doctype) && !me.frm.meta.allow_copy) {
-			this.appframe.add_dropdown_button("File", wn._("Copy"), function() { 
+			this.appframe.add_dropdown_button(wn._("File"), wn._("Copy"), function() { 
 				me.frm.copy_doc();}, 'icon-file');
 		}
 		
 		// rename
 		if(me.frm.meta.allow_rename && me.frm.perm[0][WRITE]) {
-			this.appframe.add_dropdown_button("File", wn._("Rename..."), function() { 
+			this.appframe.add_dropdown_button(wn._("File"), wn._("Rename..."), function() { 
 				me.frm.rename_doc();}, 'icon-retweet');
 		}
 		
 		// delete
 		if((cint(me.frm.doc.docstatus) != 1) && !me.frm.doc.__islocal 
 			&& wn.model.can_delete(me.frm.doctype)) {
-			this.appframe.add_dropdown_button("File", wn._("Delete"), function() { 
+			this.appframe.add_dropdown_button(wn._("File"), wn._("Delete"), function() { 
 				me.frm.savetrash();}, 'icon-remove-sign');
 		}
 		
@@ -171,7 +171,7 @@ wn.ui.form.Toolbar = Class.extend({
 		} else if(!has_workflow) {
 			if(docstatus==0 && p[SUBMIT] && (!me.frm.doc.__islocal) 
 				&& (!me.frm.doc.__unsaved)) {
-				this.appframe.add_button('Submit', function() { 
+				this.appframe.add_button(wn._('Submit'), function() { 
 					me.frm.savesubmit(this);}, 'icon-lock', true)
 						.removeClass("btn-default")
 						.addClass("btn-primary");
@@ -180,11 +180,11 @@ wn.ui.form.Toolbar = Class.extend({
 				this.make_save_button();
 			}
 			else if(docstatus==1  && p[CANCEL]) {
-				this.appframe.add_button('Cancel', function() { 
+				this.appframe.add_button(wn._('Cancel'), function() { 
 					me.frm.savecancel(this) }, 'icon-remove');
 			}
 			else if(docstatus==2  && p[AMEND]) {
-				this.appframe.add_button('Amend', function() { 
+				this.appframe.add_button(wn._('Amend'), function() { 
 					me.frm.amend_doc() }, 'icon-pencil', true);
 			}
 		}
@@ -193,7 +193,7 @@ wn.ui.form.Toolbar = Class.extend({
 		if(this.frm.save_disabled)
 			return;
 		var me = this;
-		this.appframe.add_button('Save', function() { 
+		this.appframe.add_button(wn._('Save'), function() { 
 			me.frm.save('Save', null, this);}, 'icon-save', true)
 				.removeClass("btn-default")
 				.addClass("btn-primary");
@@ -207,7 +207,7 @@ wn.ui.form.Toolbar = Class.extend({
 			var docstatus = cint(me.frm.doc.docstatus);
 			if(docstatus==1 && me.frm.perm[0][SUBMIT] 
 				&& !me.appframe.$w.find(".action-update").length) {
-				me.appframe.add_button("Update", function() { 
+				me.appframe.add_button(wn._("Update"), function() { 
 					me.frm.save('Update', null, me);
 				}, 'icon-save', true)
 					.removeClass("btn-default")
