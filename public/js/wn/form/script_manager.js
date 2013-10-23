@@ -36,14 +36,14 @@ wn.ui.form.ScriptManager = Class.extend({
 		doctype.__css && wn.dom.set_style(doctype.__css);
 	},
 	log_error: function(caller, e) {
-		show_alert("Error in Client Script.");
+		show_alert(wn._("Error in Client Script."));
 		console.group && console.group();
-		console.log("----- error in client script -----");
-		console.log("method: " + caller);
+		console.log(wn._("----- error in client script -----"));
+		console.log(wn._("method: ") + caller);
 		console.log(e);
-		console.log("error message: " + e.message);
+		console.log(wn._("error message: ") + e.message);
 		console.trace && console.trace();
-		console.log("----- end of error message -----");
+		console.log(wn._("----- end of error message -----"));
 		console.group && console.groupEnd();
 	},
 	validate_link_and_fetch: function(df, docname, value, callback) {
