@@ -100,7 +100,7 @@ wn.ui.form.Layout = Class.extend({
 			if(df.label) {
 				this.labelled_section_count++;
 				$('<h3 class="col-md-12">' 
-					+ (df.options ? (' <i class="text-muted '+df.options+'"></i> ') : "") 
+					+ (df.options ? (' <i class="text-muted '+ wn._(df.options) +'"></i> ') : "") 
 					+ '<span class="section-count-label">' + this.labelled_section_count + "</span>. " 
 					+ wn._(df.label)
 					+ "</h3>")
@@ -115,7 +115,7 @@ wn.ui.form.Layout = Class.extend({
 					});
 			}
 			if(df.description) {
-				$('<div class="col-md-12 small text-muted">' + df.description + '</div>').appendTo(this.section);
+				$('<div class="col-md-12 small text-muted">' + wn._(df.description) + '</div>').appendTo(this.section);
 			}
 			if(df.label || df.description) {
 				// spacer
