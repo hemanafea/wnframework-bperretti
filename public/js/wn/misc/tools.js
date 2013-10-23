@@ -5,8 +5,8 @@ wn.provide("wn.tools");
 
 wn.tools.downloadify = function(data, roles, me) {
 	if(roles && roles.length && !has_common(roles, user_roles)) {
-		msgprint("Export not allowed. You need " + wn.utils.comma_or(roles)
-			+ " Role to export.");
+		msgprint(wn._("Export not allowed. You need ") + wn.utils.comma_or(roles)
+			+ wn._(" Role to export."));
 		return;
 	}
 	
