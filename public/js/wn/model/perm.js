@@ -138,21 +138,21 @@ $.extend(wn.perm, {
 		else 
 			ret='None';
 
-		if(explain) console.log("By Permission:" + ret)
+		if(explain) console.log(wn._("By Permission:") + ret)
 
 		// hidden
 		if(cint(df.hidden)) {
 			ret = 'None';
 		}
 
-		if(explain) console.log("By Hidden:" + ret)
+		if(explain) console.log(wn._("By Hidden:" )+ ret)
 
 		// for submit
 		if(ret=='Write' && cint(doc.docstatus) > 0) {
 			ret = 'Read';
 		}
 
-		if(explain) console.log("By Submit:" + ret)
+		if(explain) console.log(wn._("By Submit:" )+ ret)
 
 		// allow on submit
 		var allow_on_submit = df.fieldtype!= "Table" ? 
@@ -169,14 +169,14 @@ $.extend(wn.perm, {
 		// 		0;
 		// }
 
-		if(explain) console.log("Allow on Submit:" + allow_on_submit)
+		if(explain) console.log(wn._("Allow on Submit:")+ allow_on_submit)
 
 		if(ret=="Read" && allow_on_submit && cint(doc.docstatus)==1 && 
 			perm[df.permlevel][WRITE]) {
 			ret='Write';
 		}
 
-		if(explain) console.log("By Allow on Submt:" + ret)
+		if(explain) console.log(wn._("By Allow on Submt:") + ret)
 
 		// workflow state
 		if(ret=="Write" && cur_frm && cur_frm.state_fieldname) {
@@ -190,7 +190,7 @@ $.extend(wn.perm, {
 			}
 		}
 
-		if(explain) console.log("By Workflow:" + ret)
+		if(explain) console.log(wn._("By Workflow:") + ret)
 
 		// make a field read_only if read_only 
 		// is checked (disregards write permission)
@@ -198,7 +198,7 @@ $.extend(wn.perm, {
 			ret = "Read";
 		}
 
-		if(explain) console.log("By Read Only:" + ret)
+		if(explain) console.log(wn._("By Read Only:") + ret)
 
 		return ret;
 		
