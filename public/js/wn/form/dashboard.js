@@ -90,7 +90,7 @@ wn.ui.form.Dashboard = Class.extend({
 		if(!progress_area.length) {
 			progress_area = $('<div class="progress-area">').appendTo(this.body);
 		}
-		var progress_chart = $('<div class="progress-chart"><h5>'+title+'</h5></div>')
+		var progress_chart = $('<div class="progress-chart"><h5>'+wn._(title)+'</h5></div>')
 			.appendTo(progress_area);
 		
 		var n_charts = progress_area.find(".progress-chart").length,
