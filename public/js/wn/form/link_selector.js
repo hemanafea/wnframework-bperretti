@@ -2,7 +2,7 @@
 // MIT License. See license.txt
 
 wn.ui.form.LinkSelector = Class.extend({
-	_help: "Dialog box to select a Link Value",
+	_help: wn._("Dialog box to select a Link Value"),
 	init: function(opts) {
 		/* help: Options: doctype, get_query, target */
 		$.extend(this, opts);
@@ -18,17 +18,17 @@ wn.ui.form.LinkSelector = Class.extend({
 	},
 	make: function() {
 		this.dialog = new wn.ui.Dialog({
-			"title": "Select " + (this.doctype=='[Select]' ? "Value" : this.doctype),
+			"title": wn._("Select ") + (this.doctype=='[Select]' ? "Value" : this.doctype),
 			"fields": [
 				{
-					fieldtype: "Data", fieldname: "txt", label: "Beginning with",
-					description: "You can use wildcard %" 
+					fieldtype: "Data", fieldname: "txt", label: wn._("Beginning with"),
+					description: wn._("You can use wildcard %") 
 				},
 				{
-					fieldtype: "Select", fieldname: "search_field", label: "Search With"
+					fieldtype: "Select", fieldname: "search_field", label: wn._("Search With")
 				},
 				{
-					fieldtype: "Button", fieldname: "search", label: "Search",
+					fieldtype: "Button", fieldname: "search", label: wn._("Search"),
 				},
 				{
 					fieldtype: "HTML", fieldname: "results"
