@@ -76,7 +76,7 @@ $.extend(wn.meta, {
 		var df = wn.model.get("DocField", {parent:parent_dt, fieldtype:"Table", 
 			options:child_dt})
 		if(!df.length) 
-			throw "parentfield not found for " + parent_dt + ", " + child_dt;
+			throw wn._("parentfield not found for ") + parent_dt + ", " + child_dt;
 		return df[0].fieldname;
 	},
 		
