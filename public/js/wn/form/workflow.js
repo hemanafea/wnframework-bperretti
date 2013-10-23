@@ -42,7 +42,7 @@ wn.ui.form.States = Class.extend({
 			wn.workflow.setup(me.frm.doctype);
 			var state = me.get_state();
 			var d = new wn.ui.Dialog({
-				title: "Workflow: "
+				title: wn._("Workflow: ")
 					+ wn.workflow.workflows[me.frm.doctype].name
 			})
 			var next_html = $.map(wn.workflow.get_transitions(me.frm.doctype, state), 
