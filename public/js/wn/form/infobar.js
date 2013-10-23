@@ -14,10 +14,10 @@ wn.ui.form.InfoBar = Class.extend({
 
 		this.appframe.add_infobar(
 			wn.user.full_name(this.frm.doc.modified_by) + " / " + comment_when(this.frm.doc.modified), function() {
-			msgprint("Created By: " + wn.user.full_name(me.frm.doc.owner) + "<br>" +
-				"Created On: " + dateutil.str_to_user(me.frm.doc.creation) + "<br>" +
-				"Last Modified By: " + wn.user.full_name(me.frm.doc.modified_by) + "<br>" +
-				"Last Modifed On: " + dateutil.str_to_user(me.frm.doc.modified), "History");
+			msgprint(wn._("Created By: ") + wn.user.full_name(me.frm.doc.owner) + "<br>" +
+				wn._("Created On: ") + dateutil.str_to_user(me.frm.doc.creation) + "<br>" +
+				wn._("Last Modified By: ") + wn.user.full_name(me.frm.doc.modified_by) + "<br>" +
+				wn._("Last Modifed On: ") + dateutil.str_to_user(me.frm.doc.modified), wn._("History"));
 		})
 		this.make_links();
 		this.make_side_icons();
@@ -32,7 +32,7 @@ wn.ui.form.InfoBar = Class.extend({
 			
 		var $li1 = this.appframe.add_infobar(
 			  (comments ? '<i class="icon-comments" style="font-size: 120%; color: orange"></i> ' : '')
-			+ '<span class="comment-text">' + comments + " " 
+			+ '<span class="comment-text">' + wn._(comments) + " " 
 			+ (comments===1 ? wn._("Comment") : wn._("Comments")) + '</span>',
 			function() {
 				$('html, body').animate({
@@ -45,7 +45,7 @@ wn.ui.form.InfoBar = Class.extend({
 			var last = docinfo.comments[0];
 			$li1.find(".comment-text")
 				.popover({
-					title: "Last Comment",
+					title: wn._("Last Comment"),
 					content: last.comment 
 						+ '<p class="text-muted small">By '
 						+ wn.user_info(last.comment_by).fullname 
