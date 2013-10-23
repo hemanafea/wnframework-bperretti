@@ -207,7 +207,7 @@ wn.ui.form.GridRow = Class.extend({
 			var me = this;
 			me.wrapper.toggle(false);
 			wn.model.clear_doc(me.doc.doctype, me.doc.name);
-			me.frm.script_manager.trigger(me.grid.df.fieldname + "_remove", me.doc.doctype, me.doc.name);
+			me.frm.script_manager.trigger(me.grid.df.fieldname + wn._("_remove"), me.doc.doctype, me.doc.name);
 			me.frm.dirty();
 			me.grid.refresh();
 		}
@@ -402,7 +402,7 @@ wn.ui.form.GridRow = Class.extend({
 		var me = this,
 			make_row = function(label) {
 				if(label)
-					$('<div><h4 style="margin-bottom: 0px;"><b>'+ label +'</b></h4>\
+					$('<div><h4 style="margin-bottom: 0px;"><b>'+ wn._(label) +'</b></h4>\
 						<hr style="margin-top: 10px;"></div>')
 						.appendTo(me.form_area);
 
@@ -458,7 +458,7 @@ wn.ui.form.GridRow = Class.extend({
 		if(!this.form_area) {
 			$('<div class="panel-heading">\
 				<div class="toolbar" style="height: 36px;">\
-					<span class="panel-title">Editing Row #<span class="row-index"></span></span>\
+					<span class="panel-title">Editing Ro #<wspan class="row-index"></span></span>\
 					<button class="btn btn-success pull-right grid-toggle-row" \
 						title="'+wn._("Close")+'"\
 						style="margin-left: 7px;">\
@@ -475,7 +475,7 @@ wn.ui.form.GridRow = Class.extend({
 			<div class="panel-body">\
 				<div class="form-area"></div>\
 				<div class="toolbar footer-toolbar" style="height: 36px;">\
-					<span class="text-muted"><a href="#" class="shortcuts"><i class="icon-keyboard"></i> Shortcuts</a></span>\
+					<span class="text-muted"><a href="#" class="shortcuts"><i class="icon-keyboard"></i>'+wn._("Shortcuts")+'</a></span>\
 					<button class="btn btn-success pull-right grid-toggle-row" \
 						title="'+wn._("Close")+'"\
 						style="margin-left: 7px;">\
@@ -508,9 +508,9 @@ wn.ui.form.GridRow = Class.extend({
 				return false;
 			});
 		this.form_panel.find(".shortcuts").on("click", function() {
-			msgprint('Move Up: Ctrl+<i class="icon-arrow-up"></i>');
-			msgprint('Move Down: Ctrl+<i class="icon-arrow-down"></i>');
-			msgprint('Close: Esc');
+			msgprint(wn._('Move Up: ')+'Ctrl+<i class="icon-arrow-up"></i>');
+			msgprint(wn._('Move Down: ')+'Ctrl+<i class="icon-arrow-down"></i>');
+			msgprint(wn._('Close: Esc'));
 			return false;
 		})
 	},
