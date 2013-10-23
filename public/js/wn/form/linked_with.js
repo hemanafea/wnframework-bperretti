@@ -41,7 +41,7 @@ wn.ui.form.LinkedWith = Class.extend({
 				{ fieldtype: "Select", options: links, 
 					label: wn._("Type"), fieldname: "list_by" },
 				{ fieldtype: "HTML", label: "hr", options:"<hr>" },
-				{ fieldtype: "HTML", label: "list" }
+				{ fieldtype: "HTML", label: wn._("list") }
 			]
 		});
 		
