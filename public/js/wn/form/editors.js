@@ -75,7 +75,7 @@ wn.editors.BootstrapWYSIWYG = Class.extend({
 		</div><div class="clearfix"></div>').appendTo(this.opts.parent);
 		this.$parent = $(this.opts.parent);
 		this.$editor = $("#" + this.myid);
-		this.$parent.find(".btn-add-link").click(function() {
+		this.$parent.find(".btn-add-link").click(function() { 
 			me.show_link_dialog();
 			return false;
 		})
