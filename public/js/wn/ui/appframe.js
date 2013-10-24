@@ -58,7 +58,7 @@ wn.ui.AppFrame = Class.extend({
 	
 	add_infobar: function(label, onclick) {
 		var $ul = this.$w.find(".info-bar").toggle(true).find("ul"),
-			$li = $('<li><a href="#">' + label + '</a></li>')
+			$li = $('<li><a href="#">' + wn._(label) + '</a></li>')
 				.appendTo($ul)
 				.click(function() {
 					onclick();
@@ -237,7 +237,7 @@ wn.ui.AppFrame = Class.extend({
 		}
 
 		return $('<li class="custom-menu"><a><i class="'
-			+icon+'"></i> '+label+'</a></li>')
+			+icon+'"></i> '+ wn._(label)+'</a></li>')
 			.insertBefore(menu.find(".divider"))
 			.find("a")
 			.click(function() {
@@ -246,7 +246,7 @@ wn.ui.AppFrame = Class.extend({
 	},
 	add_label: function(label) {
 		this.show_toolbar();
-		return $("<label style='margin-top: 0.8%; margin-left: 5px; margin-right: 5px; float: left;'>"+label+" </label>")
+		return $("<label style='margin-top: 0.8%; margin-left: 5px; margin-right: 5px; float: left;'>"+wn._(label)+" </label>")
 			.appendTo(this.toolbar.find(".appframe-form"));
 	},
 	add_select: function(label, options) {
@@ -263,7 +263,7 @@ wn.ui.AppFrame = Class.extend({
 	},
 	add_check: function(label) {
 		this.show_toolbar();
-		return $("<div class='checkbox' style='margin-right: 10px; margin-top: 7px; float: left;'><label><input type='checkbox'>" + label + "</label></div>")
+		return $("<div class='checkbox' style='margin-right: 10px; margin-top: 7px; float: left;'><label><input type='checkbox'>" + wn._(label) + "</label></div>")
 			.appendTo(this.toolbar.find(".appframe-form"))
 			.find("input");
 	},
