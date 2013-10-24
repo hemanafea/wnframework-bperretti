@@ -185,7 +185,7 @@ wn.views.Calendar = Class.extend({
 			args: me.get_update_args(event),
 			callback: function(r) {
 				if(r.exc) {
-					show_alert("Unable to update event.")
+					show_alert(wn._("Unable to update event."))
 					revertFunc();
 				}
 			}
