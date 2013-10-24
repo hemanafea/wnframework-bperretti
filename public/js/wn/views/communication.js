@@ -35,7 +35,7 @@ wn.views.CommunicationList = Class.extend({
 	clear_list: function() {
 		this.body.remove();
 		$("<div class='alert alert-info'>" + wn._("No Communication tagged with this ") 
-			+ this.doc.doctype +" yet.</div>").appendTo(this.wrapper);	
+			+ this.doc.doctype + wn._(" yet.")+"</div>").appendTo(this.wrapper);	
 	},
 	make_body: function() {
 		$(this.parent)
@@ -248,7 +248,7 @@ wn.views.CommunicationComposer = Class.extend({
 					+ "<p></p><hr>" + print_html;
 			} else {
 				form_values.content = form_values.content + "<p>"
-					+ "Please see attachment for document details.</p>"
+					+ wn._("Please see attachment for document details.")+"</p>"
 			}
 		} else {
 			var print_html = "";
@@ -272,11 +272,11 @@ wn.views.CommunicationComposer = Class.extend({
 			callback: function(r) {
 				if(!r.exc) {
 					if(form_values.send_email)
-						msgprint("Email sent to " + form_values.recipients);
+						msgprint(wn._("Email sent to ") + form_values.recipients);
 					me.dialog.hide();
 					cur_frm.reload_doc();
 				} else {
-					msgprint("There were errors while sending email. Please try again.")
+					msgprint(wn._("There were errors while sending email. Please try again."))
 				}
 			}
 		});
