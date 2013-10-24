@@ -17,7 +17,7 @@ wn.ui.Search = Class.extend({
 	make: function() {
 		var me = this;
 		this.dialog = new wn.ui.Dialog({
-			title: this.doctype + ' Search',
+			title: this.doctype + wn._(' Search'),
 			width: 500
 		});
 		var parent = $('<div class="row"><div class="col-md-12"></div></div>')
