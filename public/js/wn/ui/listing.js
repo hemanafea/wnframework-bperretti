@@ -70,10 +70,10 @@ wn.ui.Listing = Class.extend({
 						<div>\
 							<button class="btn btn-default btn-info search-btn">\
 								<i class="icon-refresh icon-white"></i> \
-								<span class="hidden-phone">Search</span></button>\
+								<span class="hidden-phone">'+wn._('Search')+'</span></button>\
 							<button class="btn btn-default add-filter-btn">\
 								<i class="icon-plus"></i> \
-								<span class="hidden-phone">Add Filter</span></button>\
+								<span class="hidden-phone">'+wn._('Add Filter')+'</span></button>\
 						</div>\
 					</div>\
 				</div>\
@@ -116,7 +116,7 @@ wn.ui.Listing = Class.extend({
 		} else {
 			$button = $('<button class="btn btn-default"></button>')
 				.appendTo(this.$w.find('.list-toolbar'))
-				.html((icon ? ("<i class='"+icon+"'></i> ") : "") + label)
+				.html((icon ? ("<i class='"+icon+"'></i> ") : "") + wn._(label))0
 				.click(click);
 			return $button
 		}
