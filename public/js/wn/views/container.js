@@ -6,8 +6,8 @@ wn.provide('wn.pages');
 wn.provide('wn.views');
 
 wn.views.Container = Class.extend({
-	_intro: "Container contains pages inside `#container` and manages \
-			page creation, switching",
+	_intro: wn._("Container contains pages inside `#container` and manages \
+			page creation, switching"),
 	init: function() {
 		this.container = $('#body_div').addClass("container").get(0);
 		this.page = null; // current page
@@ -16,7 +16,7 @@ wn.views.Container = Class.extend({
 	},
 	add_page: function(label, onshow, onhide) {
 		var page = $('<div class="content row"></div>')
-			.attr('id', "page-" + label)
+			.attr('id', "page-" + wn._(label))
 			.toggle(false)
 			.appendTo(this.container).get(0);
 		if(onshow)
@@ -43,7 +43,7 @@ wn.views.Container = Class.extend({
 			var page = wn.pages[label];
 		}
 		if(!page) {
-			console.log(wn._('Page not found')+ ': ' + label);
+			console.log(wn._('Page not found')+ ': ' + wn._(label));
 			return;
 		}
 		
