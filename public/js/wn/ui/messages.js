@@ -16,7 +16,7 @@ wn.messages.waiting = function(parent, msg, bar_percent) {
 };
 
 wn.throw = function(msg) {
-	msgprint(msg);
+	msgprint(wn._(msg));
 	throw msg;
 }
 
@@ -43,7 +43,7 @@ function msgprint(msg, title) {
 	if(msg instanceof Array) {
 		$.each(msg, function(i,v) {
 			if(v) {
-				msgprint(v);
+				msgprint(wn._(v));
 			}
 		})
 		return;
@@ -59,7 +59,7 @@ function msgprint(msg, title) {
 
 	if(!msg_dialog) {
 		msg_dialog = new wn.ui.Dialog({
-			title:"Message",
+			title:wn._("Message"),
 			onhide: function() {
 				msg_dialog.msg_area.empty();
 			}
