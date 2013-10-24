@@ -90,14 +90,14 @@ wn.ui.Filter = Class.extend({
 		<div class="fieldname_select_area col-sm-4 form-group"></div>\
 		<div class="col-sm-3 form-group">\
 			<select class="condition form-control">\
-				<option value="=">Equals</option>\
-				<option value="like">Like</option>\
-				<option value=">=">Greater or equals</option>\
-				<option value="<=">Less or equals</option>\
-				<option value=">">Greater than</option>\
-				<option value="<">Less than</option>\
-				<option value="in">In</option>\
-				<option value="!=">Not equals</option>\
+				<option value="=">'+wn._('Equals')+'</option>\
+				<option value="like">'+wn._('Like')+'</option>\
+				<option value=">=">'+wn._('Greater or equals')+'</option>\
+				<option value="<=">'+wn._('Less or equals')+'</option>\
+				<option value=">">'+wn._('Greater than')+'</option>\
+				<option value="<">'+wn._('Less than')+'</option>\
+				<option value="in">'+wn._('In')+'</option>\
+				<option value="!=">'+wn._('Not equals')+'</option>\
 			</select>\
 		</div>\
 		<div class="filter_field col-sm-4 col-xs-11"></div>\
@@ -144,7 +144,7 @@ wn.ui.Filter = Class.extend({
 				me.set_field(me.field.df.parent, me.field.df.fieldname, 'Data');
 				if(!me.field.desc_area)
 					me.field.desc_area = $a(me.field.wrapper, 'span', 'help', null,
-						'values separated by comma');				
+						wn._('values separated by comma'));				
 			} else {
 				me.set_field(me.field.df.parent, me.field.df.fieldname);				
 			}
@@ -191,7 +191,7 @@ wn.ui.Filter = Class.extend({
 		me.fieldselect.$select.val(tablename + "." + fieldname);
 		
 		if(me.fieldselect.$select.val() != tablename + "." + fieldname) {
-			msgprint("Field " + df.label + " is not selectable.");
+			msgprint(wn._("Field ") + wn._(df.label) + wn._(" is not selectable."));
 			return;
 		}
 		
@@ -310,7 +310,7 @@ wn.ui.FieldSelect = Class.extend({
 			std_filters = std_filters.concat([{
 				fieldname: 'parent',
 				fieldtype: 'Data',
-				label: 'Parent',
+				label: wn._('Parent'),
 				parent: me.doctype,
 			}]);
 		}
