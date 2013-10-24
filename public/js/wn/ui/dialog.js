@@ -72,7 +72,7 @@ wn.ui.Dialog = wn.ui.FieldGroup.extend({
 					try {
 						first.get(0).focus();
 					} catch(e) {
-						console.log("Dialog: unable to focus on first input: " + e);
+						console.log(wn._("Dialog: unable to focus on first input: ") + e);
 					}
 				}
 				me.onshow && me.onshow();
