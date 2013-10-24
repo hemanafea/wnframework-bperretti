@@ -59,12 +59,12 @@ wn.ui.FieldGroup = Class.extend({
 			var v = f.get_parsed_value();
 
 			if(f.df.reqd && !v) 
-				errors.push(f.df.label + ' is mandatory');
+				errors.push(f.df.label + wn._(' is mandatory'));
 
 			if(v) ret[f.df.fieldname] = v;
 		}
 		if(errors.length) {
-			msgprint('<b>Please check the following Errors</b>\n' + errors.join('\n'));
+			msgprint('<b>'+wn._('Please check the following Errors')+'</b>\n' + errors.join('\n'));
 			return null;
 		}
 		return ret;
