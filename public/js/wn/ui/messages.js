@@ -21,7 +21,7 @@ wn.throw = function(msg) {
 }
 
 wn.confirm = function(message, ifyes, ifno) {
-	var d = msgprint("<p>" + message + "</p>\
+	var d = msgprint("<p>" + wn._(message) + "</p>\
 		<p style='text-align: right'>\
 			<button class='btn btn-info btn-yes'>"+wn._('Yes')+"</button>\
 			<button class='btn btn-default btn-no'>"+wn._('No')+"</button>\
@@ -92,7 +92,7 @@ function show_alert(txt, add_class) {
 	}
 
 	var div = $('<div class="alert alert-warning">\
-		<a class="close">&times;</a>'+ txt +'</div>')
+		<a class="close">&times;</a>'+ wn._(txt) +'</div>')
 			.appendTo('#alert-container')
 	div.find('.close').click(function() {
 		$(this).parent().remove();
