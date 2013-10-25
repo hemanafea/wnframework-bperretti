@@ -47,10 +47,10 @@ wn.views.Gantt = Class.extend({
 		this.appframe.add_button("Refresh", 
 			function() { me.refresh(); }, "icon-refresh")
 
-		this.appframe.add_field({fieldtype:"Date", label:"From", 
+		this.appframe.add_field({fieldtype:"Date", label:wn._("From"), 
 			fieldname:"start", "default": wn.datetime.month_start(), input_css: {"z-index": 3}});
 
-		this.appframe.add_field({fieldtype:"Date", label:"To", 
+		this.appframe.add_field({fieldtype:"Date", label:wn._("To"), 
 			fieldname:"end", "default": wn.datetime.month_end(), input_css: {"z-index": 3}});
 			
 		if(this.filters) {
@@ -65,7 +65,7 @@ wn.views.Gantt = Class.extend({
 			.find(".layout-main")
 			.empty()
 			.css('min-height', '300px')
-			.html('<div class="alert alert-info">Loading...</div>');
+			.html('<div class="alert alert-info">'+wn._('Loading...')+'</div>');
 		
 		var me = this;
 		return wn.call({
@@ -80,7 +80,7 @@ wn.views.Gantt = Class.extend({
 			callback: function(r) {
 				$(parent).empty();
 				if(!r.message.length) {
-					$(parent).html('<div class="alert alert-info">Nothing to show.</div>');
+					$(parent).html('<div class="alert alert-info">'+wn._('Nothing to show.')+'</div>');
 				} else {
 					var gantt_area = $('<div class="gantt">').appendTo(parent);
 					gantt_area.gantt({
