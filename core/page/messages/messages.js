@@ -11,7 +11,7 @@ wn.pages.messages.onload = function(wrapper) {
 	
 	$('<div><div class="avatar avatar-large">\
 		<img id="avatar-image" src="lib/images/ui/avatar.png"></div>\
-		<h3 style="display: inline-block" id="message-title">Everyone</h3>\
+		<h3 style="display: inline-block" id="message-title">'+wn._("Everyone")+'</h3>\
 	</div><hr>\
 	<div id="post-message">\
 	<textarea class="form-control" rows=3 style="margin-bottom: 15px;"></textarea>\
@@ -167,7 +167,7 @@ wn.core.pages.messages = Class.extend({
 				$('<h4>Users</h4><hr>\
 					<div id="show-everyone">\
 						<a href="#messages/'+user+'" class="btn btn-default">\
-							Messages from everyone</a><hr></div>\
+							'+wn._("Messages from everyone")+'</a><hr></div>\
 				').appendTo($body);
 
 				$("#show-everyone").toggle(me.contact!==user);
