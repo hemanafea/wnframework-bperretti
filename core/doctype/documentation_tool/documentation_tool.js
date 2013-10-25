@@ -199,7 +199,7 @@ wn.docs.DocsPage = Class.extend({
 			try {
 				this.make_obj_from_cur_frm(obj); 
 			} catch(e) {
-				console.log("Failed: " + obj._label);
+				console.log(wn._("Failed: ") + obj._label);
 				console.log(e);
 			}
 		}
@@ -207,7 +207,7 @@ wn.docs.DocsPage = Class.extend({
 		has_docs = this.make_functions(obj) || has_docs;
 		
 		if(!has_docs) {
-			$('<h4 class="text-muted">No docs</h4>').appendTo(this.parent);
+			$('<h4 class="text-muted">'+wn._('No docs')+'</h4>').appendTo(this.parent);
 		}
 		
 		if(this.links) {
