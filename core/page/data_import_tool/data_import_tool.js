@@ -1,49 +1,49 @@
 wn.pages['data-import-tool'].onload = function(wrapper) { 
 	wrapper.app_page = wn.ui.make_app_page({
 		parent: wrapper,
-		title: "Data Import Tool",
+		title: wn._("Data Import Tool"),
 		icon: "data-import-tool"
 	});
 	
-	$(wrapper).find('.layout-main-section').append('<h3>1. Download Template</h3>\
+	$(wrapper).find('.layout-main-section').append('<h3>1. '+wn._('Download Template')+'</h3>\
 		<div style="min-height: 150px">\
-			<p class="help">Download a template for importing a table.</p>\
+			<p class="help">'+wn._('Download a template for importing a table.')+'</p>\
 			<p class="float-column">\
 				<select class="form-control" style="width: 200px" name="dit-doctype">\
 				</select><br><br>\
 				<input type="checkbox" name="dit-with-data" style="margin-top: -3px">\
-				<span> Download with data</span>\
+				<span>'+wn._('Download with data')+'</span>\
 			</p>\
 			<p class="float-column" id="dit-download"></p>\
 		</div>\
 		<hr>\
-		<h3>2. Import Data</h3>\
-		<p class="help">Attach .csv file to import data</p>\
+		<h3>2. '+wn._('Import Data')+'</h3>\
+		<p class="help">'+wn._('Attach .csv file to import data')+'</p>\
 		<div id="dit-upload-area"></div><br>\
 		<div class="dit-progress-area" style="display: None"></div>\
 		<p id="dit-output"></p>\
 		');
 		
 	$(wrapper).find('.layout-side-section').append('<h4>Help</h4>\
-		<p><b>Importing non-English data:</b></p>\
-		<p>While uploading non English files ensure that the encoding is UTF-8.</p>\
-		<p>Microsoft Excel Users:\
-		<ol>\
-			<li>In Excel, save the file in CSV (Comma Delimited) format</li>\
-			<li>Open this saved file in Notepad</li>\
-			<li>Click on File -&gt; Save As</li>\
-			<li>File Name: &lt;your filename&gt;.csv<br />\
-				Save as type: Text Documents (*.txt)<br />\
+		<p><b>'+wn._('Importing non-English data:')+'</b></p>\
+		<p>'+wn._('While uploading non English files ensure that the encoding is UTF-8.')+'</p>\
+		<p>'+wn._('Microsoft Excel Users:')+
+		'<ol>\
+			<li>'+wm._('In Excel, save the file in CSV (Comma Delimited) format')+'</li>\
+			<li>'+wn._('Open this saved file in Notepad')+'</li>\
+			<li>'+wn._('Click on File ')+'-&gt; Save As </li>\
+			<li>'+wn._('File Name: ')+'&lt;your filename&gt;.csv<br />'+
+				wn._('Save as type: Text Documents')+'(*.txt)<br />\
 				Encoding: UTF-8\
 			</li>\
-			<li>Click on Save</li>\
+			<li>'+wn._('Click on Save')+'</li>\
 		</ol>\
 		</p>')
 	
 	$select = $(wrapper).find('[name="dit-doctype"]');
 	
 	wn.messages.waiting($(wrapper).find(".dit-progress-area").toggle(false), 
-		"Performing hardcore import process....", 100);
+		wn._("Performing hardcore import process...."), 100);
 	
 	// load doctypes
 	wn.call({
@@ -102,16 +102,16 @@ wn.pages['data-import-tool'].onload = function(wrapper) {
 					// download link
 					$.each(r.message, function(i, v) {
 						if(i==0)
-							$('<span>Main Table:</span><br>').appendTo('#dit-download');
+							$('<span>'+wn._('Main Table:')+'</span><br>').appendTo('#dit-download');
 						if(i==1)
-							$('<br><span>Child Tables:</span><br>').appendTo('#dit-download');
+							$('<br><span>'+wn._('Child Tables:')+'</span><br>').appendTo('#dit-download');
 							
 						wrapper.add_template_download_link(v);
 						$('#dit-download').append('<br>');
 					});
 					
 					if(r.message.length > 1) {
-						$('<br><span>All Tables (Main + Child Tables):</span><br>').appendTo('#dit-download');
+						$('<br><span>'+wn._('All Tables ')+'(Main + Child Tables):</span><br>').appendTo('#dit-download');
 						var link = wrapper
 							.add_template_download_link(r.message[0])
 							.data('all_doctypes', "Yes")
@@ -157,14 +157,14 @@ wn.pages['data-import-tool'].onload = function(wrapper) {
 				return v;
 			});
 			
-			r.messages = ["<h4 style='color:red'>Import Failed!</h4>"]
+			r.messages = ["<h4 style='color:red'>"+wn._('Import Failed!')+"</h4>"]
 				.concat(r.messages);
 				
 			write_messages(r);
 		},
 		callback: function(fid, filename, r) {
 			// replace links if error has occured
-			r.messages = ["<h4 style='color:green'>Import Successful!</h4>"].
+			r.messages = ["<h4 style='color:green'>"+wn._("Import Successful!")+"</h4>"].
 				concat(r.message.messages)
 			
 			write_messages(r);
@@ -177,19 +177,19 @@ wn.pages['data-import-tool'].onload = function(wrapper) {
 		
 	$('<input type="checkbox" name="overwrite" style="margin-top: -3px">\
 		<span> Overwrite</span>\
-		<p class="help">If you are uploading a child table (for example Item Price), the all the entries of that table will be deleted (for that parent record) and new entries will be made.</p><br>')
+		<p class="help">'+wn._("If you are uploading a child table (for example Item Price), the all the entries of that table will be deleted (for that parent record) and new entries will be made.")+'</p><br>')
 		.insertBefore($submit_btn);
 	
 	// add submit option
 	$('<input type="checkbox" name="_submit" style="margin-top: -3px">\
 		<span> Submit</span>\
-		<p class="help">If you are inserting new records (overwrite not checked) \
-			and if you have submit permission, the record will be submitted.</p><br>')
+		<p class="help">'+wn._("If you are inserting new records (overwrite not checked) \
+			and if you have submit permission, the record will be submitted.")+'</p><br>')
 		.insertBefore($submit_btn);
 
 	// add ignore option
 	$('<input type="checkbox" name="ignore_encoding_errors" style="margin-top: -3px">\
-		<span> Ignore Encoding Errors</span><br><br>')
+		<span>'+wm._("Ignore Encoding Errors")+'</span><br><br>')
 		.insertBefore($submit_btn);
 	
 	// rename button
