@@ -29,7 +29,7 @@ wn.assets = {
 		if(window._version_number != localStorage.getItem("_version_number")) {
 			localStorage.clear();
 			localStorage.setItem("_version_number", window._version_number);
-			console.log("Cleared App Cache.");
+			console.log(wn._("Cleared App Cache."));
 		}
 	},
 	
@@ -50,7 +50,7 @@ wn.assets = {
 			} catch(e) {
 				// if quota is exceeded, clear local storage and set item
 				localStorage.clear();
-				console.log("Local Storage cleared");
+				console.log(wn._("Local Storage cleared"));
 				
 				localStorage.setItem(src, txt);
 			}
