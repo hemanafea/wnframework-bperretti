@@ -11,7 +11,7 @@ wn.standard_pages["query-report"] = function() {
 
 	wn.ui.make_app_page({
 		parent: wrapper,
-		title: 'Query Report',
+		title: wn._('Query Report'),
 		single_column: true
 	});
 
