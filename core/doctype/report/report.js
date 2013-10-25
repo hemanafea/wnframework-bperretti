@@ -20,8 +20,7 @@ cur_frm.cscript.refresh = function(doc) {
 			break;
 		case "Query Report":
 			cur_frm.set_intro(wn._("Write a SELECT query. Note result is not paged (all data is sent in one go).")
-				+ wn._("To format columns, give column labels in the query.") + "<br>"
-				+ wn._("[Label]:[Field Type]/[Options]:[Width]") + "<br><br>"
+				+ wn._("To format columns, give column labels in the query.") + "<br>[Label]:[Field Type]/[Options]:[Width] <br><br>"
 				+ wn._("Example:") + "<br>"
 				+ "Employee:Link/Employee:200" + "<br>"
 				+ "Rate:Currency:120" + "<br>")
