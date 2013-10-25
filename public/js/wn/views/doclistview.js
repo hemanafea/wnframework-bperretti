@@ -52,7 +52,7 @@ wn.views.DocListView = wn.ui.Listing.extend({
 			.appendTo(this.$page.find(".layout-main-section"));
 			
 		$('<div class="show-docstatus hide section">\
-			<div class="section-head">Show</div>\
+			<div class="section-head">'+wn._('Show')+'</div>\
 			<div><input data-docstatus="0" type="checkbox" \
 				checked="checked" /> '+wn._('Drafts')+'</div>\
 			<div><input data-docstatus="1" type="checkbox" \
