@@ -14,7 +14,7 @@ wn.standard_pages["test-runner"] = function() {
 
 	var route = wn.get_route();
 	if(route.length < 2) {
-		msgprint("To run a test add the module name in the route after 'test-runner/'. \
+		msgprint(wn._("To run a test add the module name in the route after ")+"'test-runner/'. \
 			For example, #test-runner/lib/js/wn/test_app.js");
 		return;
 	}
