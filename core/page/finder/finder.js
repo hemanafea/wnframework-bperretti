@@ -21,7 +21,7 @@ wn.pages['finder'].onload = function(wrapper) {
 		return $('<div class="col-sm-'+colsize+'">\
 			<div class="panel panel-'+panel_class+'">\
 				<div class="panel-heading"><i class="icon-'+icon+'"></i> \
-					<span class="col-heading">'+label+'</span>\
+					<span class="col-heading">'+wn._(label)+'</span>\
 					<span class="pull-right"></span>\
 				</div>\
 				<div class="list-group">\
