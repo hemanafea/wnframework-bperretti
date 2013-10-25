@@ -196,7 +196,7 @@ wn.views.GridReport = Class.extend({
 				filters.val(value);
 			}
 		} else {
-			msgprint("Invalid Filter: " + key)
+			msgprint(wn._("Invalid Filter: ") + key)
 		}
 	},
 	set_autocomplete: function($filter, list) {
@@ -374,9 +374,9 @@ wn.views.GridReport = Class.extend({
 		// print / export
 		$('<div style="text-align: right;"> \
 			<div class="processing" style="background-color: #fec; display: none; \
-				float: left; margin: 2px">Updated! </div> \
+				float: left; margin: 2px">'+wn._('Updated!')+'</div> \
 			<a href="#" class="grid-report-export"> \
-				<i class="icon icon-download-alt"></i> Export</a> \
+				<i class="icon icon-download-alt"></i>'+wn._('Export')+'</a> \
 		</div>').appendTo(this.wrapper);
 		
 		this.wrapper.find(".grid-report-export").click(function() { return me.export(); });
@@ -857,8 +857,8 @@ wn.views.TreeGridReport = wn.views.GridReportWithPlot.extend({
 			if(group_ids.indexOf(item.name)==-1) {
 				item_group_map[parent].push(item);				
 			} else {
-				msgprint("Ignoring Item "+ item.name.bold() + 
-					", because a group exists with the same name!");
+				msgprint(wn._("Ignoring Item ")+ item.name.bold() + 
+					wn._(", because a group exists with the same name!"));
 			}
 		});
 		
@@ -888,9 +888,9 @@ wn.views.TreeGridReport = wn.views.GridReportWithPlot.extend({
 	
 	export: function() {
 		var msgbox = msgprint('<p>Select To Download:</p>\
-			<p><input type="checkbox" name="with_groups" checked="checked"> With Groups</p>\
-			<p><input type="checkbox" name="with_ledgers" checked="checked"> With Ledgers</p>\
-			<p><button class="btn btn-info">Download</button>');
+			<p><input type="checkbox" name="with_groups" checked="checked">'+wn._('With Groups')+'</p>\
+			<p><input type="checkbox" name="with_ledgers" checked="checked">'+wn._('With Ledgers')+'</p>\
+			<p><button class="btn btn-info">'+wn._('Download')+'</button>');
 
 		var me = this;
 
