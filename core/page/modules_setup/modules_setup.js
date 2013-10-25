@@ -2,15 +2,15 @@
 wn.pages['modules_setup'].onload = function(wrapper) { 
 	wn.ui.make_app_page({
 		parent: wrapper,
-		title: 'Show or Hide Modules',
+		title: wn._('Show or Hide Modules'),
 		single_column: true
 	});
 	
-	wrapper.appframe.add_button("Update", function() {
+	wrapper.appframe.add_button(wn._("Update"), function() {
 		wn.modules_setup.update(this);
 	})
 	
-	$('<div class="alert alert-info">Select modules to be shown.</div>').appendTo($(wrapper).find(".layout-main"));
+	$('<div class="alert alert-info">'+wn._("Select modules to be shown.")+'</div>').appendTo($(wrapper).find(".layout-main"));
 	$('<div id="modules-list">').appendTo($(wrapper).find(".layout-main"));
 	
 	wn.modules_setup.refresh_page();
@@ -42,7 +42,7 @@ wn.modules_setup = {
 				ml: ml
 			},
 			callback: function(r) {
-				if(r.exc) msgprint("There were errors.")
+				if(r.exc) msgprint(wn._("There were errors."))
 			},
 			btn: btn
 		});
