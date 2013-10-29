@@ -11,8 +11,8 @@ wn.pages['permission-manager'].onload = function(wrapper) {
 	<ol>\
 	<li>"+wn._("Permissions are set on Roles and Document Types (called DocTypes) by restricting read, edit, make new, submit, cancel, amend and report rights.")+"</li>\
 	<li>"+wn._("Permissions translate to Users based on what Role they are assigned")+".</li>\
-	<li>"+wn._("To set user roles, just go to <a href='#List/Profile'>Setup > Users</a> and click on the user to assign roles.")+"</li>\
-	<li>"+wn._("The system provides pre-defined roles, but you can <a href='#List/Role'>add new roles</a> to set finer permissions")+".</li>\
+	<li>"+wn._("To set user roles, just go to ")+"<a href='#List/Profile'>Setup > Users</a> "+wn._("and click on the user to assign roles.")+"</li>\
+	<li>"+wn._("The system provides pre-defined roles, but you can ")+"<a href='#List/Role'>"+wn._("add new roles")+"</a>"+wn._("to set finer permissions")+".</li>\
 	<li>"+wn._("Permissions are automatically translated to Standard Reports and Searches")+".</li>\
 	<li>"+wn._("As a best practice, do not assign the same set of permission rule to different Roles instead set multiple Roles to the User")+".</li>\
 	</ol>\
@@ -20,10 +20,10 @@ wn.pages['permission-manager'].onload = function(wrapper) {
 	<tr><td>\
 	<h4><i class='icon-hand-right'></i> "+wn._("Meaning of Submit, Cancel, Amend")+":</h4>\
 	<ol>\
-	<li>"+wn._("Certain documents should not be changed once final, like an Invoice for example. The final state for such documents is called <b>Submitted</b>. You can restrict which roles can Submit.")+"</li>\
-	<li>"+wn._("<b>Cancel</b> allows you change Submitted documents by cancelling them and amending them.")+
-		wn._("Cancel permission also allows the user to delete a document (if it is not linked to any other document).")+"</li>\
-	<li>"+wn._("When you <b>Amend</b> a document after cancel and save it, it will get a new number that is a version of the old number.")+
+	<li>"+wn._("Certain documents should not be changed once final, like an Invoice for example. The final state for such documents is called ")+"<b>"+wn._("Submitted")+"</b>. "+wn._("You can restrict which roles can Submit.")+"</li>\
+	<li><b>"+wn._("Cancel ")+"</b>"+wn._("allows you change Submitted documents by cancelling them and amending them.")+
+		     wn._("Cancel permission also allows the user to delete a document (if it is not linked to any other document).")+"</li>\
+	<li>"+wn._("When you ")+"<b>"+wn._("Amend ")+"</b>"+wn._("a document after cancel and save it, it will get a new number that is a version of the old number.")+
 		wn._("For example if you cancel and amend 'INV004' it will become a new document 'INV004-1'. This helps you to keep track of each amendment.")+
 	"</li>\
 	</ol>\
@@ -34,7 +34,7 @@ wn.pages['permission-manager'].onload = function(wrapper) {
 	<li>"+wn._("Permissions at level 0 are 'Document Level' permissions, i.e. they are primary for access to the document.")+
 		wn._("If a User does not have access at Level 0, then higher levels are meaningless")+".</li>\
 	<li>"+wn._("Permissions at higher levels are 'Field Level' permissions. All Fields have a 'Permission Level' set against them and the rules defined at that permissions apply to the field. This is useful incase you want to hide or make certain field read-only.")+
-		wn._("You can use <a href='#Form/Customize Form'>Customize Form</a> to set levels on fields.")+"</li>\
+		wn._("You can use") +"<a href='#Form/Customize Form'>"+wn._("Customize Form ")+"</a>"+wn._("to set levels on fields.")+"</li>\
 	</ol>\
 	</tr></td>\
 	<tr><td>\
@@ -42,7 +42,7 @@ wn.pages['permission-manager'].onload = function(wrapper) {
 	<ol>\
 		<li>"+wn._("To restrict a User of a particular Role to documents that are only self-created.")+
 			wn._("Click on button in the 'Condition' column and select the option 'User is the creator of the document'")+".</li>\
-		<li>"+wn._("To restrict a User of a particular Role to documents that are explicitly assigned to them")+ ":"+
+		<li>"+wn._("To restrict a User of a particular Role to documents that are explicitly assigned to them:")+
 			+ wn._("create a Custom Field of type Link (Profile) and then use the 'Condition' settings to map that field to the Permission rule.")+
 	"</ol>\
 	</tr></td>\
@@ -51,19 +51,19 @@ wn.pages['permission-manager'].onload = function(wrapper) {
 	<p>"+wn._("To further restrict permissions based on certain values in a document, use the 'Condition' settings.")+" <br><br>"+
 		wn._("For example: You want to restrict users to transactions marked with a certain property called 'Territory'")+":</p>\
 	<ol>\
-		<li>"+wn._("Make sure that the transactions you want to restrict have a Link field 'territory' that maps to a 'Territory' master.")+" "
+		<li>"+wn._("Make sure that the transactions you want to restrict have a Link field 'territory' that maps to a 'Territory' master.")+
 		+wn._("If not, create a")+
 			"<a href='#List/Custom Field'>"+wn._("Custom Field")+"</a>"+ wn._("of type Link")+".</li>\
 		<li>"+wn._("In the Permission Manager, click on the button in the 'Condition' column for the Role you want to restrict.")+"</li>\
 		<li>"+wn._("A new popup will open that will ask you to select further conditions.")+
 			wn._("If the 'territory' Link Field exists, it will give you an option to select it")+".</li>\
-		<li>"+wn._("Go to Setup > <a href='#user-properties'>User Properties</a> to set \
+		<li>"+wn._("Go to Setup >")+"<a href='#user-properties'>"+wn._("User Properties ")+"</a>"+ wn._("to set
 			'territory' for diffent Users.")+"</li>\
 	</ol>\
 	<p>"+wn._("Once you have set this, the users will only be able access documents with that property.")+"</p>\
 	<hr>\
-	<p>If these instructions where not helpful, please add in your suggestions at\
-	<a href='https://github.com/webnotes/wnframework/issues'>GitHub Issues</a></p>\
+	<p>"+wn._("If these instructions where not helpful, please add in your suggestions at")+
+	"<a href='https://github.com/webnotes/wnframework/issues'>GitHub Issues</a></p>\
 	</tr></td>\
 	</table>");
 	wrapper.permission_engine = new wn.PermissionEngine(wrapper);
@@ -116,8 +116,8 @@ wn.PermissionEngine = Class.extend({
 	},
 	make_reset_button: function() {
 		var me = this;
-		me.reset_button = me.wrapper.appframe.add_button("Reset Permissions", function() {
-			if(wn.confirm("Reset Permissions for " + me.get_doctype() + "?", function() {
+		me.reset_button = me.wrapper.appframe.add_button(wn._("Reset Permissions"), function() {
+			if(wn.confirm(wn._("Reset Permissions for ") + me.get_doctype() + "?", function() {
 					return wn.call({
 						module:"core",
 						page:"permission_manager",
@@ -232,7 +232,7 @@ wn.PermissionEngine = Class.extend({
 		});
 	},
 	set_show_users: function(cell, role) {
-		cell.html("<a href='#'>"+role+"</a>")
+		cell.html("<a href='#'>"+wn._(role)+"</a>")
 			.find("a")
 			.attr("data-role", role)
 			.click(function() {
@@ -246,9 +246,9 @@ wn.PermissionEngine = Class.extend({
 					},
 					callback: function(r) {
 						r.message = $.map(r.message, function(p) {
-							return '<a href="#Form/Profile/'+p+'">'+p+'</a>';
+							return '<a href="#Form/Profile/'+p+'">'+wn._(p)+'</a>';
 						})
-						msgprint("<h4>Users with role "+role+":</h4>" 
+						msgprint("<h4>" + wn._("Users with role")+ " "+wn._(role)+":</h4>" 
 							+ r.message.join("<br>"));
 					}
 				})
@@ -287,7 +287,7 @@ wn.PermissionEngine = Class.extend({
 					},
 					callback: function(r) {
 						if(r.exc) {
-							msgprint("Did not remove.");
+							msgprint(wn._("Did not remove."));
 						} else {
 							me.refresh();
 						}
@@ -329,11 +329,11 @@ wn.PermissionEngine = Class.extend({
 				var d = new wn.ui.Dialog({
 					title: wn._("Add New Permission Rule"),
 					fields: [
-						{fieldtype:"Select", label:"Document Type",
+						{fieldtype:"Select", label:wn._("Document Type"),
 							options:me.options.doctypes, reqd:1, fieldname:"parent"},
-						{fieldtype:"Select", label:"Role",
+						{fieldtype:"Select", label:wn._("Role"),
 							options:me.options.roles, reqd:1},
-						{fieldtype:"Select", label:"Permission Level",
+						{fieldtype:"Select", label:wn._("Permission Level"),
 							options:[0,1,2,3,4,5,6,7,8,9], reqd:1, fieldname: "permlevel",
 							description: wn._("Level 0 is for document level permissions, higher levels for field level permissions.")},
 						{fieldtype:"Button", label:"Add"},
@@ -384,17 +384,17 @@ wn.PermissionEngine = Class.extend({
 			});
 			$(dialog.body).html("<h4>Rule Applies to Following Users:</h4>\
 			<label class='radio'>\
-			<input name='perm-rule' type='radio' value=''> All users with role <b>"+perm.role+"</b>.\
+			<input name='perm-rule' type='radio' value=''> All users with role <b>"+wn._(perm.role)+"</b>.\
 			</label>\
 			<label class='radio'>\
-			<input name='perm-rule' type='radio' value='owner'> The user is the creator of the document.\
+			<input name='perm-rule' type='radio' value='owner'>"+wn._("The user is the creator of the document.")+"
 			</label>").css("padding", "15px");
 
 			// profile fields
 			$.each(me.get_profile_fields(perm.parent), function(i, d) {
 				$("<label class='radio'>\
 				<input name='perm-rule' type='radio' value='"+d.fieldname
-					+":user'>Value of field <b>"+d.label+"</b> is the User.\
+					+":user'>Value of field <b>"+wn._(d.label)+"</b> is the User.\
 				</label>").appendTo(dialog.body);
 			});
 
@@ -402,7 +402,7 @@ wn.PermissionEngine = Class.extend({
 			$.each(me.get_link_fields(perm.parent), function(i, d) {
 				$("<label class='radio'>\
 				<input name='perm-rule' type='radio' value='"+d.fieldname
-					+"'><b>"+d.label+"</b> in <b>"+d.parent+"</b> matches <a href='#user-properties//"+d.fieldname+"'>User Property</a> <b>"
+					+"'><b>"+d.label+"</b> in <b>"+wn._(d.parent)+"</b> matches <a href='#user-properties//"+d.fieldname+"'>"+wn._("User Property")+"</a> <b>"
 					+d.fieldname+"</b>.\
 				</label>").appendTo(dialog.body);
 			});
