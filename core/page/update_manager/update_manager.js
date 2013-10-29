@@ -1,7 +1,7 @@
 wn.pages['update-manager'].onload = function(wrapper) { 
 	wn.ui.make_app_page({
 		parent: wrapper,
-		title: 'Update ' + wn.app.name,
+		title: wn._('Update ') + wn.app.name,
 		single_column: true
 	});					
 	
