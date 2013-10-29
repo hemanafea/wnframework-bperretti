@@ -34,7 +34,7 @@ _p.go = function(html) {
 _p.preview = function(html) {
 	var w = window.open();
 	if(!w) {
-		msgprint(_("Please enable pop-ups"));
+		msgprint(wn._("Please enable pop-ups"));
 		return;
 	}
 	w.document.write(html);
@@ -54,13 +54,13 @@ $.extend(_p, {
 	make_dialog: function() {
 		// Prepare Dialog Box Layout
 		var dialog = new wn.ui.Dialog({
-			title: "Print Formats",
+			title: wn._("Print Formats"),
 			fields: [
-				{fieldtype:"Select", label:"Print Format", fieldname:"print_format", reqd:1},
-				{fieldtype:"Check", label:"No Letter Head", fieldname:"no_letterhead"},
+				{fieldtype:"Select", label:wn._("Print Format"), fieldname:"print_format", reqd:1},
+				{fieldtype:"Check", label:wn._("No Letter Head"), fieldname:"no_letterhead"},
 				{fieldtype:"HTML", options: '<p style="text-align: right;">\
-					<button class="btn btn-primary btn-print">Print</button>\
-					<button class="btn btn-default btn-preview">Preview</button>\
+					<button class="btn btn-primary btn-print">'+wn._("Print")+'</button>\
+					<button class="btn btn-default btn-preview">'+wn._("Preview")+'</button>\
 				</p>'},
 			]
 		});
@@ -116,7 +116,7 @@ $.extend(_p, {
 		};
 	
 		if(!cur_frm) {
-			alert('No Document Selected');
+			alert(wn._('No Document Selected'));
 			return;
 		}
 				
@@ -135,7 +135,7 @@ $.extend(_p, {
 		} else {
 			var print_format_doc = locals["Print Format"][args.fmtname];
 			if(!print_format_doc) {
-				msgprint("Unknown Print Format: " + args.fmtname);
+				msgprint(wn._("Unknown Print Format: ") + args.fmtname);
 				return;
 			}
 			args.onload(_p.render({
@@ -211,7 +211,7 @@ $.extend(_p, {
 		if(args.doc && cint(args.doc.docstatus)==0 && is_doctype_submittable) {
 			draft = _p.head_banner_format();
 			draft = draft.replace("{{HEAD}}", "DRAFT");
-			draft = draft.replace("{{DESCRIPTION}}", "This box will go away after the document is submitted.");
+			draft = draft.replace("{{DESCRIPTION}}", wn._("This box will go away after the document is submitted."));
 			return draft;
 		} else {
 			return "";
@@ -227,7 +227,7 @@ $.extend(_p, {
 		if(args.doc && args.doc.__archived) {
 			archived = _p.head_banner_format();
 			archived = archived.replace("{{HEAD}}", "ARCHIVED");
-			archived = archived.replace("{{DESCRIPTION}}", "You must restore this document to make it editable.");
+			archived = archived.replace("{{DESCRIPTION}}", wn._("You must restore this document to make it editable."));
 			return archived;
 		} else {
 			return "";
@@ -243,7 +243,7 @@ $.extend(_p, {
 		if(args.doc && args.doc.docstatus==2) {
 			cancelled = _p.head_banner_format();
 			cancelled = cancelled.replace("{{HEAD}}", "CANCELLED");
-			cancelled = cancelled.replace("{{DESCRIPTION}}", "You must amend this document to make it editable.");
+			cancelled = cancelled.replace("{{DESCRIPTION}}", wn._("You must amend this document to make it editable."));
 			return cancelled;
 		} else {
 			return "";
