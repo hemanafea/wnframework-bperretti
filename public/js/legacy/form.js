@@ -62,15 +62,15 @@ _f.Frm = function(doctype, parent, in_form) {
 _f.Frm.prototype.check_doctype_conflict = function(docname) {
 	var me = this;
 	if(this.doctype=='DocType' && docname=='DocType') {
-		msgprint('Allowing DocType, DocType. Be careful!')
+		msgprint(wn._('Allowing DocType, DocType. Be careful!'))
 	} else if(this.doctype=='DocType') {
 		if (wn.views.formview[docname] || wn.pages['List/'+docname]) {
-			msgprint("Cannot open DocType when its instance is open")
+			msgprint(wn._("Cannot open DocType when its instance is open"))
 			throw 'doctype open conflict'
 		}
 	} else {
 		if (wn.views.formview.DocType && wn.views.formview.DocType.frm.opendocs[this.doctype]) {
-			msgprint("Cannot open instance when its DocType is open")
+			msgprint(wn._("Cannot open instance when its DocType is open"))
 			throw 'doctype open conflict'
 		}		
 	}
@@ -203,7 +203,7 @@ _f.Frm.prototype.setup_print = function() {
 
 _f.Frm.prototype.print_doc = function() {
 	if(this.doc.docstatus==2)  {
-		msgprint("Cannot Print Cancelled Documents.");
+		msgprint(wn._("Cannot Print Cancelled Documents."));
 		return;
 	}
 
@@ -609,7 +609,7 @@ _f.Frm.prototype.runscript = function(scriptname, callingfield, onrefresh) {
 
 _f.Frm.prototype.copy_doc = function(onload, from_amend) {
 	if(!this.perm[0][CREATE]) {
-		msgprint('You are not allowed to create '+this.meta.name);
+		msgprint(wn._('You are not allowed to create ')+this.meta.name);
 		return;
 	}
 	
@@ -705,7 +705,7 @@ _f.Frm.prototype.save = function(save_action, callback, btn, on_error) {
 
 _f.Frm.prototype.savesubmit = function(btn, on_error) {
 	var me = this;
-	wn.confirm("Permanently Submit "+this.docname+"?", function() {
+	wn.confirm(wn._("Permanently Submit ")+this.docname+"?", function() {
 		validated = true;
 		me.script_manager.trigger("before_submit");
 		if(!validated) {
@@ -724,7 +724,7 @@ _f.Frm.prototype.savesubmit = function(btn, on_error) {
 
 _f.Frm.prototype.savecancel = function(btn, on_error) {
 	var me = this;
-	wn.confirm("Permanently Cancel "+this.docname+"?", function() {
+	wn.confirm(wn._("Permanently Cancel ")+this.docname+"?", function() {
 		validated = true;
 		me.script_manager.trigger("before_cancel");
 		if(!validated) {
@@ -752,7 +752,7 @@ _f.Frm.prototype.savetrash = function() {
 
 _f.Frm.prototype.amend_doc = function() {
 	if(!this.fields_dict['amended_from']) {
-		alert('"amended_from" field must be present to do an amendment.');
+		alert(wn._('"amended_from" field must be present to do an amendment.'));
 		return;
 	}
 	var me = this;
@@ -779,7 +779,7 @@ _f.Frm.prototype.save_or_update = function() {
 	if(this.doc.docstatus===0) {
 		this.save();
 	} else if(this.doc.docstatus===1 && this.doc.__unsaved) {
-		this.frm_head.appframe.buttons['Update'].click();
+		this.frm_head.appframe.buttons[wn._('Update')].click();
 	}
 }
 
