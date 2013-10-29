@@ -6,12 +6,12 @@
 function same_day(d1, d2) {
 	if(d1.getFullYear()==d2.getFullYear() && d1.getMonth()==d2.getMonth() && d1.getDate()==d2.getDate())return true; else return false;
 }
-var month_list = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+var month_list = [wn._('Jan'),wn._('Feb'),wn._('Mar'),wn._('Apr'),wn._('May'),wn._('Jun'),wn._('Jul'),wn._('Aug'),wn._('Sep'),wn._('Oct'),wn._('Nov'),wn._('Dec')];
 var month_last = {1:31,2:28,3:31,4:30,5:31,6:30,7:31,8:31,9:30,10:31,11:30,12:31}
-var month_list_full = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+var month_list_full = [wn._('January'),wn._('February'),wn._('March'),wn._('April'),wn._('May'),wn._('June'),wn._('July'),wn._('August'),wn._('September'),wn._('October'),wn._('November'),wn._('December')];
 
-var week_list = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-var week_list_full = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+var week_list = [wn._('Sun'),wn._('Mon'),wn._('Tue'),wn._('Wed'),wn._('Thu'),wn._('Fri'),wn._('Sat')];
+var week_list_full = [wn._('Sunday'),wn._('Monday'),wn._('Tuesday'),wn._('Wednesday'),wn._('Thursday'),wn._('Friday'),wn._('Saturday')];
 
 function int_to_str(i, len) {
 	i = ''+i;
