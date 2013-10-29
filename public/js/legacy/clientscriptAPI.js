@@ -54,7 +54,7 @@ set_field_tip = function(n,txt) {
 		if(cur_frm.fields_dict[n])
 			cur_frm.fields_dict[n].comment_area.innerHTML = replace_newlines(txt);
 		else
-			console.log('[set_field_tip] Unable to set field tip: ' + n);
+			console.log('[set_field_tip] '+wn._('Unable to set field tip: ') + n);
 	}
 }
 
@@ -85,7 +85,7 @@ toggle_field = function(n, hidden) {
 		refresh_field(n);
 	}
 	else {
-		console.log((hidden ? "hide_field" : "unhide_field") + " cannot find field " + n);
+		console.log((hidden ? "hide_field" : "unhide_field") + wn._(" cannot find field ") + n);
 	}
 }
 
