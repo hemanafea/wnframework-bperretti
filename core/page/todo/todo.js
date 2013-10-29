@@ -15,7 +15,7 @@ wn.core.pages.todo.refresh = function() {
 			
 			var nothing_to_do = function() {
 				$('#todo-list div.todo-content')
-					.html('<div class="alert alert-success">Nothing to do :)</div>');
+					.html('<div class="alert alert-success">'+wn._('Nothing to do ')+':)</div>');
 			}
 			
 			
@@ -120,14 +120,14 @@ wn.core.pages.todo.make_dialog = function(det) {
 	if(!wn.core.pages.todo.dialog) {
 		var dialog = new wn.ui.Dialog({
 			width: 480,
-			title: 'To Do', 
+			title: wn._('To Do'), 
 			fields: [
-				{fieldtype:'Text', fieldname:'description', label:'Description', 
+				{fieldtype:'Text', fieldname:'description', label:wn._('Description'), 
 					reqd:1},
-				{fieldtype:'Date', fieldname:'date', label:'Event Date', reqd:1},
-				{fieldtype:'Check', fieldname:'checked', label:'Completed'},
-				{fieldtype:'Select', fieldname:'priority', label:'Priority', reqd:1, 'options':['Medium','High','Low'].join('\n')},
-				{fieldtype:'Button', fieldname:'save', label:'Save (Ctrl+S)'}
+				{fieldtype:'Date', fieldname:'date', label:wn._('Event Date'), reqd:1},
+				{fieldtype:'Check', fieldname:'checked', label:wn._('Completed')},
+				{fieldtype:'Select', fieldname:'priority', label:wn._('Priority'), reqd:1, 'options':['Medium','High','Low'].join('\n')},
+				{fieldtype:'Button', fieldname:'save', label:wn._('Save ')+ '(Ctrl+S)'}
 			]
 		});
 		
@@ -185,8 +185,8 @@ wn.pages.todo.onload = function(wrapper) {
 	</div>');
 		
 	wrapper.appframe.add_module_icon("To Do");
-	wrapper.appframe.add_button('Refresh', wn.core.pages.todo.refresh, 'icon-refresh');
-	wrapper.appframe.add_button('Add', function() {
+	wrapper.appframe.add_button(wn._('Refresh'), wn.core.pages.todo.refresh, 'icon-refresh');
+	wrapper.appframe.add_button(wn._('Add'), function() {
 		wn.core.pages.todo.make_dialog({
 			date:get_today(), priority:'Medium', checked:0, description:''});
 	}, 'icon-plus');
@@ -194,7 +194,7 @@ wn.pages.todo.onload = function(wrapper) {
 	
 	// show report button for System Manager
 	if(wn.boot.profile.roles.indexOf("System Manager") !== -1) {
-		wrapper.appframe.add_button("Report", function() { wn.set_route("query-report", "todo"); },
+		wrapper.appframe.add_button(wn._("Report"), function() { wn.set_route("query-report", "todo"); },
 			"icon-table");
 	}
 
