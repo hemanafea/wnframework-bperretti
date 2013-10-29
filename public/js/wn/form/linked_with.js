@@ -35,7 +35,7 @@ wn.ui.form.LinkedWith = Class.extend({
 			hide_on_page_refresh: true,
 			title: wn._("Linked With"),
 			fields: [
-				{ fieldtype: "HTML", label: "help", 
+				{ fieldtype: "HTML", label: wn._("help"), 
 					options:"<div class='help'>" + wn._("List of records in which this document is linked") 
 						+"</div>" },
 				{ fieldtype: "Select", options: links, 
