@@ -1,7 +1,7 @@
 wn.pages['user-properties'].onload = function(wrapper) { 
 	wn.ui.make_app_page({
 		parent: wrapper,
-		title: 'User Properties',
+		title: wn._('User Properties'),
 		single_column: true
 	});					
 	$(wrapper).find(".layout-main").html("<div class='user-settings'></div>\
@@ -12,7 +12,8 @@ wn.pages['user-properties'].onload = function(wrapper) {
 	<li>"+wn._("You can set various 'properties' to Users to set default values and apply permission rules based on the value of these properties in various forms.")+"</li>\
 	<li>"+wn._("These properties are Link Type fields from all Documents.")+"</li>\
 	<li>"+wn._("These properties will appear as values in forms that contain them.")+"</li>\
-	<li>"+wn._("These properties can also be used to 'assign' a particular document, whose property matches with the User's property to a User. These can be set using the <a href='#permission-manager'>Permission Manager</a>")+"</li>\
+	<li>"+wn._("These properties can also be used to 'assign' a particular document, whose property matches with the User's property to a User. These can be set using the") +"<a href='#permission-manager'>"
+	     +wn._("Permission Manager")+"</a></li>\
 	<li>"+wn._("A user can have multiple values for a property.")+"</li>\
 	</ol>\
 	</tr></td>\
@@ -157,7 +158,7 @@ wn.UserProperties = Class.extend({
 					},
 					callback: function(r) {
 						if(r.exc) {
-							msgprint("Did not remove.");
+							msgprint(wn._("Did not remove."));
 						} else {
 							me.refresh();
 						}
