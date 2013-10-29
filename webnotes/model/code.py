@@ -24,7 +24,7 @@ from webnotes.model.doc import Document, addchild, getchildren
 from webnotes.model.utils import getlist
 from webnotes.utils.email_lib import sendmail
 from webnotes.model.code import get_obj, get_server_obj, run_server_obj
-from webnotes import session, form, msgprint, errprint
+from webnotes import session, form, msgprint, errprint, _
 
 sql = webnotes.conn.sql
 
@@ -115,9 +115,12 @@ def get_module_name(doctype, module, prefix):
 	_doctype, _module = scrub(doctype), scrub(module)
 	return '%s.doctype.%s.%s%s' % (_module, _doctype, prefix, _doctype)
 
-def load_doctype_module(doctype, module, prefix=""):
+def load_doctype_module(doctype, module=None, prefix=""):
 	import webnotes
-	from webnotes.modules import scrub
+	from webnotes.modules import scrub, get_doctype_module
+	if not module:
+		module = get_doctype_module(doctype) or "core"
+	
 	_doctype, _module = scrub(doctype), scrub(module)
 	try:
 		module = __import__(get_module_name(doctype, module, prefix), fromlist=[''])
