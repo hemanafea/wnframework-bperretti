@@ -36,7 +36,7 @@ cur_frm.cscript.user_image = function(doc) {
 }
 
 cur_frm.cscript.refresh = function(doc) {
-	cur_frm.toggle_reqd('new_password', doc.__islocal);
+	cur_frm.toggle_display('change_password', !doc.__islocal);
 
 	cur_frm.toggle_display(['sb1', 'sb3'], false);
 
@@ -86,7 +86,7 @@ wn.RoleEditor = Class.extend({
 	init: function(wrapper) {
 		var me = this;
 		this.wrapper = wrapper;
-		$(wrapper).html('<div class="help">Loading...</div>')
+		$(wrapper).html('<div class="help">'+wn._('Loading...')+'</div>')
 		return wn.call({
 			method:'core.doctype.profile.profile.get_all_roles',
 			callback: function(r) {
@@ -104,11 +104,25 @@ wn.RoleEditor = Class.extend({
 	show_roles: function() {
 		var me = this;
 		$(this.wrapper).empty();
+<<<<<<< HEAD
 		var add_all_roles = $('<p><button class="btn btn-default">'+wn._("Add all roles")+'</button></p>').appendTo($(this.wrapper));
 		add_all_roles.find("button").on("click", function() {
+=======
+		var add_all_roles = $('<p><button class="btn btn-default btn-add">'+wn._('Add all roles')+'</button>\
+			<button class="btn btn-default btn-remove">'+wn._('Clear all roles')+'</button></p>').appendTo($(this.wrapper));
+		add_all_roles.find(".btn-add").on("click", function() {
+>>>>>>> 54934e5a5427e49ecc7ffc4773ab504373939947
 			$(me.wrapper).find('input[type="checkbox"]').each(function(i, check) {
 				if(!$(check).is(":checked")) {
 					check.checked = true;
+				}
+			});
+		});
+
+		add_all_roles.find(".btn-remove").on("click", function() {
+			$(me.wrapper).find('input[type="checkbox"]').each(function(i, check) {
+				if($(check).is(":checked")) {
+					check.checked = false;
 				}
 			});
 		});

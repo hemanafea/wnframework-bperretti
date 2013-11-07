@@ -83,7 +83,7 @@ wn.views.QueryReport = Class.extend({
 			if(me.report_name!=route[1]) {
 				me.report_name = route[1];
 				this.wrapper.find(".no-report-area").toggle(false);
-				me.appframe.set_title(wn._("Query Report")+": " + me.report_name);
+				me.appframe.set_title(wn._("Query Report")+": " + wn._(me.report_name));
 				
 				if(!wn.query_reports[me.report_name]) {
 					return wn.call({
@@ -92,6 +92,7 @@ wn.views.QueryReport = Class.extend({
 							report_name: me.report_name
 						},
 						callback: function(r) {
+							me.appframe.set_title(wn._("Query Report")+": " + wn._(me.report_name));
 							wn.dom.eval(r.message || "");
 							me.setup_filters();
 							me.refresh();
@@ -209,6 +210,7 @@ wn.views.QueryReport = Class.extend({
 					
 					// column parameters
 					col.name = col.id = col.field = df.label;
+					col.name = wn._(df.label);
 					col.fieldtype = opts[1];
 
 					// width
@@ -221,7 +223,7 @@ wn.views.QueryReport = Class.extend({
 						fieldtype: "Data"
 					}
 				}
-				col.name = toTitle(col.name.replace(/ /g, " "))
+				col.name = wn._(toTitle(col.name.replace(/_/g, " ")))
 				return col
 		}));
 	},

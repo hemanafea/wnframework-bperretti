@@ -28,9 +28,26 @@ wn.assets = {
 		// if version is different then clear localstorage
 		if(window._version_number != localStorage.getItem("_version_number")) {
 			localStorage.clear();
+<<<<<<< HEAD
 			localStorage.setItem("_version_number", window._version_number);
 			console.log(wn._("Cleared App Cache."));
+=======
+			console.log("Cleared App Cache.");
+>>>>>>> 54934e5a5427e49ecc7ffc4773ab504373939947
 		}
+		
+		if(localStorage._last_load) {
+			var not_updated_since = new Date() - new Date(localStorage._last_load);
+			if(not_updated_since < 10000 || not_updated_since > 86400000) {
+				localStorage.clear();
+				console.log("Cleared localstorage");
+			}
+		} else {
+			localStorage.clear();
+			console.log("Cleared localstorage");
+		}
+		localStorage._last_load = new Date();
+		localStorage._version_number = window._version_number;
 	},
 	
 	// check if the asset exists in

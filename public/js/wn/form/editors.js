@@ -12,6 +12,7 @@
 
 wn.provide("wn.editors");
 
+<<<<<<< HEAD
 wn.editors.BootstrapWYSIWYG = Class.extend({
 	init: function(opts) {
 		wn.require("lib/js/lib/bootstrap-wysiwyg.js");
@@ -194,6 +195,8 @@ wn.editors.BootstrapWYSIWYG = Class.extend({
 })
 
 
+=======
+>>>>>>> 54934e5a5427e49ecc7ffc4773ab504373939947
 wn.editors.ACE = Class.extend({
 	init: function(opts) {
 		this.opts = opts;
@@ -258,8 +261,5 @@ wn.editors.ACE = Class.extend({
 				})
 			});
 		}
-	},
-	set_focus: function() {
-		this.$editor.focus();
 	},
 })

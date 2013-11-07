@@ -17,7 +17,11 @@ wn.ui.form.Grid = Class.extend({
 				<div class="rows"></div>\
 				<div style="margin-top: 5px; margin-bottom: -5px;">\
 					<a href="#" class="grid-add-row">+ '+wn._("Add new row")+'.</a>\
+<<<<<<< HEAD
 					<span class="text-muted">'+wn._('Click on row to edit.')+'</span></div>\
+=======
+					<span class="text-muted">' + wn._("Click on row to edit.") + '</span></div>\
+>>>>>>> 54934e5a5427e49ecc7ffc4773ab504373939947
 			</div>\
 		</div>\
 		</div>').appendTo(this.parent);

@@ -21,8 +21,13 @@ wn.ui.form.LinkSelector = Class.extend({
 			"title": wn._("Select ") + (this.doctype=='[Select]' ? "Value" : this.doctype),
 			"fields": [
 				{
+<<<<<<< HEAD
 					fieldtype: "Data", fieldname: "txt", label: wn._("Beginning with"),
 					description: wn._("You can use wildcard %") 
+=======
+					fieldtype: "Data", fieldname: "txt", label: "Beginning with",
+					description: "You can use wildcard %",
+>>>>>>> 54934e5a5427e49ecc7ffc4773ab504373939947
 				},
 				{
 					fieldtype: "Select", fieldname: "search_field", label: wn._("Search With")
@@ -55,6 +60,8 @@ wn.ui.form.LinkSelector = Class.extend({
 		} else {
 			this.dialog.fields_dict.search_field.$wrapper.toggle(false);
 		}
+		if(this.txt)
+			this.dialog.fields_dict.txt.set_input(this.txt);
 		this.dialog.fields_dict.search.$input.on("click", function() {
 			me.search(this);
 		});

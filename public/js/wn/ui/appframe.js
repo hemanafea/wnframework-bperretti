@@ -20,12 +20,10 @@ wn.ui.AppFrame = Class.extend({
 						<span class="title-icon" style="display: none"></span>\
 						<span class="title-text"></span></h2></div>\
 					<div class="sub-title-area text-muted small">&nbsp;</div>\
-					<div class="status-bar"></div>\
+					<div class="mini-bar"><ul></ul></div>\
 				</div>\
 			</div>\
-			<div class="info-bar" style="display: none;"><ul class="hidden-xs-inline"></ul></div>\
-			<div class="appframe-toolbar" style="display: none;">\
-			</div>\
+			<div class="appframe-toolbar" style="display: none;"></div>\
 		<div>').prependTo(parent);
 
 		this.$w.find('.close').click(function() {
@@ -47,8 +45,9 @@ wn.ui.AppFrame = Class.extend({
 		return this.$w.find(".title-area");
 	},
 	set_title: function(txt, full_text) {
+		// strip icon
 		this.title = txt;
-		document.title = txt;
+		document.title = txt.replace(/<[^>]*>/g, "");
 		this.$w.find(".breadcrumb .appframe-title").html(txt);
 		this.$w.find(".title-text").html(txt);
 	},
@@ -56,6 +55,7 @@ wn.ui.AppFrame = Class.extend({
 		this.$w.find(".sub-title-area").html(txt);
 	},
 	
+<<<<<<< HEAD
 	add_infobar: function(label, onclick) {
 		var $ul = this.$w.find(".info-bar").toggle(true).find("ul"),
 			$li = $('<li><a href="#">' + wn._(label) + '</a></li>')
@@ -64,14 +64,29 @@ wn.ui.AppFrame = Class.extend({
 					onclick();
 					return false;
 				})
+=======
+	add_to_mini_bar: function(icon, label, click) {
+		var $ul = this.$w.find(".mini-bar ul"),
+		$li = $('<li><i class="'+icon+'"></i></li>')
+			.attr("title", label)
+			.appendTo($ul)
+			.click(function() {
+				click();
+				return false;
+			})
+>>>>>>> 54934e5a5427e49ecc7ffc4773ab504373939947
 		return $li;
 	},
 	
-	clear_infobar: function() {
-		this.$w.find(".info-bar").toggle(false).find("ul").empty();
+	hide_mini_bar: function() {
+		this.$w.find(".mini-bar").toggle(false);
 	},
-	
-	add_module_icon: function(module, doctype) {
+
+	show_mini_bar: function() {
+		this.$w.find(".mini-bar").toggle(true);
+	},
+		
+	add_module_icon: function(module, doctype, onclick) {
 		var module_info = wn.modules[module];
 		if(!module_info) {
 			module_info = {
@@ -87,12 +102,17 @@ wn.ui.AppFrame = Class.extend({
 				"background-color": module_info.color,
 			})
 			.attr("doctype-name", doctype)
-			.click(function() {
-				if($(this).attr("doctype-name")) {
+			.attr("module-link", module_info.link)
+			.click(onclick || function() {
+				var route = wn.get_route();
+				if($(this).attr("doctype-name") && route[0]!=="List") {
 					wn.set_route("List", $(this).attr("doctype-name"))
+				} else if($(this).attr("module-link")!==route[0]){
+					wn.set_route($(this).attr("module-link"));
 				} else {
 					wn.set_route("");
 				}
+				return false;
 			});
 	},
 	
@@ -282,7 +302,8 @@ wn.ui.AppFrame = Class.extend({
 				"padding-right": "0px",
 				"margin-right": "5px"
 			})
-			.attr("title", df.label).tooltip();
+			.attr("title", wn._(df.label)).tooltip();
+		f.$input.attr("placeholder", wn._(df.label));
 		if(df["default"])
 			f.set_input(df["default"])
 		this.fields_dict[df.fieldname || df.label] = f;
