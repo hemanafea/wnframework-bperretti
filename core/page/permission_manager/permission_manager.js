@@ -386,9 +386,9 @@ wn.PermissionEngine = Class.extend({
 			var dialog = new wn.ui.Dialog({
 				title: "Applies for Users",
 			});
-			$(dialog.body).html("<h4>Rule Applies to Following Users:</h4>\
+			$(dialog.body).html("<h4>"+wn._("Rule Applies to Following Users:")+"</h4>\
 			<label class='radio'>\
-			<input name='perm-rule' type='radio' value=''> All users with role <b>"+wn._(perm.role)+"</b>.\
+			<input name='perm-rule' type='radio' value=''>"+wn._("All users with role")+"<b>"+wn._(perm.role)+"</b>.\
 			</label>\
 			<label class='radio'>\
 			<input name='perm-rule' type='radio' value='owner'>"+wn._("The user is the creator of the document.")+"
