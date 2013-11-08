@@ -25,8 +25,8 @@ wn.ui.form.LinkSelector = Class.extend({
 					fieldtype: "Data", fieldname: "txt", label: wn._("Beginning with"),
 					description: wn._("You can use wildcard %") 
 =======
-					fieldtype: "Data", fieldname: "txt", label: "Beginning with",
-					description: "You can use wildcard %",
+					fieldtype: "Data", fieldname: "txt", label: wn._("Beginning with"),
+					description: wn._("You can use wildcard %"),
 >>>>>>> 54934e5a5427e49ecc7ffc4773ab504373939947
 				},
 				{
