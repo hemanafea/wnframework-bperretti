@@ -114,7 +114,7 @@ wn.ui.form.Layout = Class.extend({
 <<<<<<< HEAD
 					+ (df.options ? (' <i class="text-muted '+ wn._(df.options) +'"></i> ') : "") 
 =======
-					+ (df.options ? (' <i class="icon-in-circle '+df.options+'"></i> ') : "") 
+					+ (df.options ? (' <i class="icon-in-circle '+wn._(df.options)+'"></i> ') : "") 
 >>>>>>> 54934e5a5427e49ecc7ffc4773ab504373939947
 					+ '<span class="section-count-label">' + this.labelled_section_count + "</span>. " 
 					+ wn._(df.label)
@@ -130,7 +130,7 @@ wn.ui.form.Layout = Class.extend({
 <<<<<<< HEAD
 				$('<div class="col-md-12 small text-muted">' + wn._(df.description) + '</div>').appendTo(this.section);
 =======
-				$('<div class="col-md-12 small text-muted">' + df.description + '</div>')
+				$('<div class="col-md-12 small text-muted">' + wn._(df.description) + '</div>')
 					.css("padding-left", "40px")
 					.appendTo(this.section);
 >>>>>>> 54934e5a5427e49ecc7ffc4773ab504373939947
