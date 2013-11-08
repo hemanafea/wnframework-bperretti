@@ -172,9 +172,9 @@ wn.ui.Filter = Class.extend({
 	},
 		
 	set_values: function(tablename, fieldname, condition, value) {
-		// presents given (could be via tags!)
 		this.set_field(tablename, fieldname);
 		if(condition) this.$w.find('.condition').val(condition).change();
+		// presents given (could be via tags!)
 		if(value!=null) this.field.set_input(value);
 	},
 	
