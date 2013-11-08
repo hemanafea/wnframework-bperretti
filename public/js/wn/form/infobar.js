@@ -96,11 +96,11 @@ wn.ui.form.InfoBar = Class.extend({
 		this.$timestamp
 			.popover("destroy")
 			.popover({
-				title: "Created and Modified By",
-				content: "Created By: " + wn.user.full_name(me.frm.doc.owner) + "<br>" +
-					"Created On: " + dateutil.str_to_user(me.frm.doc.creation) + "<br>" +
-					"Last Modified By: " + wn.user.full_name(me.frm.doc.modified_by) + "<br>" +
-					"Last Modifed On: " + dateutil.str_to_user(me.frm.doc.modified),
+				title: wn._("Created and Modified By"),
+				content: wn._("Created By: ") + wn.user.full_name(me.frm.doc.owner) + "<br>" +
+					wn._("Created On: ") + dateutil.str_to_user(me.frm.doc.creation) + "<br>" +
+					wn._("Last Modified By: " )+ wn.user.full_name(me.frm.doc.modified_by) + "<br>" +
+					wn._("Last Modifed On: ") + dateutil.str_to_user(me.frm.doc.modified),
 				trigger:"hover",
 				html: true,
 				placement: "bottom"
