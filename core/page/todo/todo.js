@@ -8,27 +8,27 @@ wn.pages.todo.onload = function(wrapper) {
 	wn.ui.make_app_page({
 		parent: wrapper,
 		single_column: true,
-		title: "To Do"
+		title: wn._("To Do")
 	});
 
 	$(wrapper)
 		.css({"background-color": "#FFFDC9", "min-height": "300px"})
 		.find(".layout-main").html('<div id="todo-list">\
-		<h4><i class="icon-hand-right"></i> My Items</h4>\
+		<h4><i class="icon-hand-right"></i>'+wn._('My Items')+'</h4>\
 		<div class="todo-content" data-todo-list=1>\
 		</div>\
 		<br>\
-		<h4><i class="icon-hand-right"></i> Assigned To Me</h4>\
+		<h4><i class="icon-hand-right"></i>'+wn._('Assigned To Me')+'</h4>\
 		<div class="todo-content-to-me" data-todo-list=1>\
 		</div>\
 		<br>\
-		<h4><i class="icon-hand-right"></i> Assigned By Me</h4>\
+		<h4><i class="icon-hand-right"></i>'+wn._('Assigned By Me')+'</h4>\
 		<div class="todo-content-by-me" data-todo-list=1>\
 		</div>\
 	</div>').css({"padding-top":"0px", "margin-top": "-15px"});
 		
 	wrapper.appframe.add_module_icon("To Do");
-	wrapper.appframe.add_button('Refresh', wn.core.pages.todo.refresh, 'icon-refresh');
+	wrapper.appframe.add_button(wn._('Refresh'), wn.core.pages.todo.refresh, 'icon-refresh');
 	wrapper.appframe.add_button('Add', function() {
 		wn.core.pages.todo.make_dialog({
 			date:get_today(), priority:'Medium', checked:0, description:''});
@@ -36,7 +36,7 @@ wn.pages.todo.onload = function(wrapper) {
 	
 	// show report button for System Manager
 	if(wn.boot.profile.roles.indexOf("System Manager") !== -1) {
-		wrapper.appframe.add_button("Report", function() { wn.set_route("query-report", "todo"); },
+		wrapper.appframe.add_button(wn._("Report"), function() { wn.set_route("query-report", "todo"); },
 			"icon-table");
 	}
 
@@ -80,7 +80,7 @@ wn.core.pages.todo.refresh = function() {
 
 			$("#todo-list [data-todo-list=1]").each(function() {
 				if(!$(this).children().length) {
-					$(this).html("<span class='text-muted'>This list is empty!</span>");
+					$(this).html("<span class='text-muted'>"+wn._('This list is empty!')+"</span>");
 				}
 			})
 
